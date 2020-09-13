@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://start-cat.github.io</id>
     <title>Start-cat</title>
-    <updated>2020-09-13T08:51:53.769Z</updated>
+    <updated>2020-09-13T10:43:52.897Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://start-cat.github.io"/>
     <link rel="self" href="https://start-cat.github.io/atom.xml"/>
@@ -32,7 +32,6 @@
 <pre><code>❯ uname -a
 Darwin bogon 19.5.0 Darwin Kernel Version 19.5.0: Tue May 26 20:41:44 PDT 2020; root:xnu-6153.121.2~2/RELEASE_X86_64 x86_64
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="http://note.youdao.com/yws/res/1175/4BD27E4AFAF644618DADDE7D0C495D5A" alt="image" loading="lazy"></figure>
 <h4 id="2vpn">2.vpn</h4>
 <p>拥有公网IP的vps，配置随意</p>
 <h4 id="3服务端配置">3.服务端配置</h4>
