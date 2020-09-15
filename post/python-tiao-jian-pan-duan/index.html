@@ -8,7 +8,7 @@
 <meta name="keywords" content="个人博客">
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
-<title>关于 | Start-cat</title>
+<title>python条件判断 | Start-cat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="python条件判断" />
+  <meta name="keywords" content="python" />
 </head>
 
 <body>
@@ -254,10 +254,16 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#if%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5">if条件判断语句</a>
+<ul>
+<li><a href="#%E5%A4%9A%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5">多条件判断语句</a></li>
+<li><a href="#if%E5%B5%8C%E5%A5%97%E8%AF%AD%E5%8F%A5">if嵌套语句</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -525,8 +531,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://start-cat.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://start-cat.github.io/post/python-tiao-jian-pan-duan/">
+      python条件判断
     </a>
   </h1>
   <div class="post-meta">
@@ -534,23 +540,36 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2020-09-15 20:40:41">2020-09-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://start-cat.github.io/tag/lImE3yf88/">
+        <span>python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>368<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/python-tiao-jian-pan-duan/" data-flag-title="python条件判断" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -559,17 +578,128 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h3 id="if条件判断语句">if条件判断语句</h3>
+<p>语法格式:</p>
+<pre><code>if条件:  
+    逻辑代码  
+else:  
+    其他逻辑代码  
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">day =  input(&quot;今天星期几：&quot;)
+day = int(day)
+if day&lt;6:
+    print(&quot;是个工作的好日子&quot;)
+else:
+    print(&quot;不错的周末&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>今天星期几：6
+不错的周末
+</code></pre>
+<h4 id="多条件判断语句">多条件判断语句</h4>
+<p>语法:</p>
+<pre><code>if条件:  
+    逻辑代码  
+elif条件:  
+    逻辑代码  
+     ... ...
+else:  
+    逻辑代码    
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">day =  input(&quot;今天星期几：&quot;)
+day = int(day)
+if day == 1:
+    print(&quot;是个工作的好日子&quot;)
+elif day &gt;= 2 and day &lt;=5:
+    print(&quot;继续工作把&quot;)
+elif day == 6 or day == 7:
+    print(&quot;世界这么大，一起出去看看&quot;)
+else:
+    print(&quot;大哥，一周就7天，你想干嘛！&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>今天星期几：777
+大哥，一周就7天，你想干嘛！
+</code></pre>
+<pre><code>今天星期几：6
+世界这么大，一起出去看看
+</code></pre>
+<pre><code>今天星期几：3
+继续工作把
+</code></pre>
+<h4 id="if嵌套语句">if嵌套语句</h4>
+<p>语法:</p>
+<pre><code class="language-python">if 条件:  
+   逻辑代码  
+  if 条件:  
+   逻辑代码  
+  else:
+    逻辑代码  
+else:  
+    逻辑代码
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">num = int(input(&quot;请输入一个数字:&quot;))
+if num &gt;= 1:
+  if num &lt;= 9:
+   print(&quot;这个数在1-9之间&quot;)
+  else:
+   print(&quot;我不猜了&quot;)
+else:
+    print(&quot;亲，能不能输入一个正整数啊！&quot;)
+</code></pre>
+<p>运行结果:</p>
+<p>输入-1 ：</p>
+<pre><code>请输入一个数字:-1
+亲，能不能输入一个正整数啊！
+</code></pre>
+<p>输入5  ：</p>
+<pre><code>请输入一个数字:5
+这个数在1-9之间
+</code></pre>
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      start-cat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://start-cat.github.io/post/python-tiao-jian-pan-duan/" title="python条件判断">https://start-cat.github.io/post/python-tiao-jian-pan-duan/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://start-cat.github.io/tag/lImE3yf88/"># python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="python笔记之while和for循环" href="https://start-cat.github.io/post/python-bi-ji-zhi-while-he-for-xun-huan/">python笔记之while和for循环</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="python笔记之while和for循环" href="https://start-cat.github.io/post/python-bi-ji-zhi-while-he-for-xun-huan/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="makdown语法" href="https://start-cat.github.io/post/makdown-yu-fa/">makdown语法</a>
+        <a class="nav-mobile-next" title="makdown语法" href="https://start-cat.github.io/post/makdown-yu-fa/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   

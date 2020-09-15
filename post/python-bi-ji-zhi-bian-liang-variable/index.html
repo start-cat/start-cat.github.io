@@ -8,7 +8,7 @@
 <meta name="keywords" content="个人博客">
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
-<title>关于 | Start-cat</title>
+<title>python笔记之变量(variable)  | Start-cat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="python笔记之变量(variable) " />
+  <meta name="keywords" content="python" />
 </head>
 
 <body>
@@ -254,10 +254,15 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a><br>
+*<br>
+*<br>
+* <a href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F">局部变量</a><br>
+* <a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">全局变量</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -525,8 +530,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://start-cat.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">
+      python笔记之变量(variable) 
     </a>
   </h1>
   <div class="post-meta">
@@ -534,23 +539,36 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2020-09-15 20:43:26">2020-09-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://start-cat.github.io/tag/lImE3yf88/">
+        <span>python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>652<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/python-bi-ji-zhi-bian-liang-variable/" data-flag-title="python笔记之变量(variable) " class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -559,17 +577,152 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h3 id="变量">变量</h3>
+<h6 id="局部变量">局部变量</h6>
+<ol>
+<li>函数内部定义的变量叫做局部变量</li>
+<li>不同函数之间，局部变量可以定义形同的名字，互不影响</li>
+</ol>
+<p>作用范围:<br>
+函数内有效,其他函数不能直接使用</p>
+<p>例如，</p>
+<pre><code class="language-python">def set_name():
+    name = &quot;云端之上&quot;
+    print(name)
+
+def get_name():
+    name = &quot;星空之下&quot;
+    print(name)
+
+set_name()
+get_name()
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-ptyhon">云端之上
+星空之下
+</code></pre>
+<p>通过上述例子，我们可以发现:</p>
+<ol>
+<li>不同函数之间，局部变量可以定义相同的名字，互不影响</li>
+<li>上述函数中的name只在上个函数体内生效，其他函数内不生效</li>
+</ol>
+<p>那么，如果我想在get_name中使用set_name中的name怎么办呢？<br>
+别急,我们可以使用下面的方法:</p>
+<pre><code class="language-python">def set_name():
+    name = &quot;云端之上&quot;
+    return name  #1.返回name
+
+def get_name(name):  #3.需要set_name中名字，所以定义参数
+    print(name)
+
+a = set_name()   #2.调用函数返回一个值
+get_name(a)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>云端之上
+</code></pre>
+<h6 id="全局变量">全局变量</h6>
+<p>定义在函数外部的变量就叫做全局变量.</p>
+<p>作用范围：<br>
+可在不同的函数中使用</p>
+<p>在函数内使用global关键字实现修改全局变量的值</p>
+<p><strong>在函数体外定义的全局变量:</strong></p>
+<pre><code class="language-python">name = &quot;星空之下&quot;
+def set_name():
+    print(name)
+
+def get_name():
+    print(name)
+
+set_name()
+get_name()
+print(name)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>星空之下
+星空之下
+星空之下
+</code></pre>
+<p><strong>在函数体内定义的全局变量</strong></p>
+<pre><code class="language-python">age = 20
+def chang_age():
+    global age   #我们只需添加关键字glabal+变量名就可以，注意：列表和字典不可以用哦~
+    age = 25
+    print(&quot;函数体内的age是:%d&quot;%age)
+
+chang_age()
+print(age)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>函数体内的age是:25
+25
+</code></pre>
+<p>那么如果我们的变量是字典或列表，我们应该如何去修改全局变量呢？很简单，我们只需要在使用前先调用一下函数，然后再进行操作就可以了！</p>
+<pre><code class="language-python">g_list =[1,2,3]
+g_dict = {&quot;name&quot;:&quot;马云&quot;,&quot;age&quot;:666}
+
+def update_info():
+    g_list.append(4)
+    g_dict[&quot;monery&quot;] = &quot;￥1&quot;
+
+update_info()
+print(g_list)
+print(g_dict)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>[1, 2, 3, 4]
+{'name': '马云', 'age': 666, 'monery': '￥1'}
+</code></pre>
+<p><strong>注意：</strong><br>
+函数体外：局部变量<br>
+函数体外： 全局变量<br>
+全局变量在所有函数中使用<br>
+局部变量只能在所定义的函数中使用<br>
+如果在函数体内修改全局变量的值，使用 global 关键字<br>
+如果函数体内变量和全局变量相同，则判定它为和全局变量同名的<strong>局部变量</strong></p>
+<p>全局变量定义的位置:<br>
+函数定义之前或函数调用之前.</p>
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      start-cat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/" title="python笔记之变量(variable) ">https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://start-cat.github.io/tag/lImE3yf88/"># python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="python笔记之文件的基本操作和os模块" href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/">python笔记之文件的基本操作和os模块</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="python笔记之文件的基本操作和os模块" href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="python笔记之序列(str的基本使用和常用操作)" href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/">python笔记之序列(str的基本使用和常用操作)</a>
+        <a class="nav-mobile-next" title="python笔记之序列(str的基本使用和常用操作)" href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   

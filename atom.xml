@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://start-cat.github.io</id>
     <title>Start-cat</title>
-    <updated>2020-09-13T10:43:52.897Z</updated>
+    <updated>2020-09-15T12:44:22.640Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://start-cat.github.io"/>
     <link rel="self" href="https://start-cat.github.io/atom.xml"/>
@@ -11,120 +11,1687 @@
     <icon>https://start-cat.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Start-cat</rights>
     <entry>
-        <title type="html"><![CDATA[喂！]]></title>
-        <id>https://start-cat.github.io/post/hellow/</id>
-        <link href="https://start-cat.github.io/post/hellow/">
+        <title type="html"><![CDATA[python笔记之文件的基本操作和os模块]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/">
         </link>
-        <updated>2020-09-13T05:46:23.000Z</updated>
-        <content type="html"><![CDATA[<p>感谢所有奇妙相遇。</p>
+        <updated>2020-09-15T12:43:56.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="文件的操作">文件的操作</h3>
+<p>语法： open(文件路径，访问模式，encoding=编码格式)</p>
+<p>文件路径:</p>
+<ol>
+<li>指定路径<br>
+&quot;C:\path\file.txt&quot;<br>
+r&quot;C:\path\file.txt&quot;<br>
+(windows下用&quot;&quot;来分隔路径<br>
+unix下用&quot;/&quot;分隔路径)</li>
+<li>不指定路径<br>
+file.txt,会在程序运行的目录下创建<br>
+可以使用os模块改变路径</li>
+</ol>
+<p>打开文件的三种访问模式<br>
+r:只读模式，默认<br>
+w:写入模式(覆盖)<br>
+a:追加模式<br>
+wb:以二进制形式打开一个文件用于写入一般用于非文本文件，图片</p>
+<p>编码格式：<br>
+防止中文乱码<br>
+GBK<br>
+UTF-8</p>
+<p>文件的常用方法：<br>
+.read() 方法读取文件的全部内容<br>
+.seek() 移动指针<br>
+.write() 向文件写入字符串<br>
+.readline(num) num给数字几，就输出几个字符<br>
+.readline()  按行，一行一行的读取文件数据<br>
+.readlines() 按行读取全部内容，返回的是一个文件数据列表，每一行是列表的一个元素</p>
+<p>对于只读模式(r)来说，如果文件不存在则报错：</p>
+<pre><code class="language-python">file = open(&quot;text.txt&quot;,&quot;r&quot;) #text.txt  并不存在  
+file.close()  #调用完需要将打开的文件关闭
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day08/demo01.py&quot;, line 1, in &lt;module&gt;
+    file = open(&quot;text.txt&quot;,&quot;r&quot;)
+FileNotFoundError: [Errno 2] No such file or directory: 'text.txt'
+</code></pre>
+<p>对于写入模式(w)来说，如果文件不存在，仍会报错，但会创建一个新的文件，如果文件已存在将会覆盖原文件.</p>
+<p>例如，向C盘一个文件写入&quot;hi!&quot;</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;w&quot;)
+file.write(&quot;hi!&quot;)
+file.close()
+</code></pre>
+<p>执行后，会在 <strong>“C:\Users\123\1.txt”</strong> 写入 <strong>“hi!”</strong></p>
+<p>我们使用.read()来读取刚才写进的内容</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;)
+print(file.read())
+file.close()
+</code></pre>
+<p>运行结果：</p>
+<pre><code>hi!  
+</code></pre>
+<p>接下来我们在上述内容后追加内容&quot;good morning!&quot;</p>
+<pre><code class="language-python">#向文本内追加内容  
+file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;a&quot;,encoding=&quot;utf-8&quot;)
+file.write(&quot; \ngood morning!&quot;)
+file.close()
+#输入文本里的内容
+file1 =open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>hi!
+good morning!
+</code></pre>
+<p>如果我们需要一行一行的输出，可以使用.readline() 或 .readlines()</p>
+<p>使用.readline()</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.readline())
+print(file1.readline())
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">hi!
+
+good morning!
+</code></pre>
+<p>使用.readlines()会生成一个列表，所以下面的内容中，我们把列表遍历输出</p>
+<pre><code class="language-python">#向文本内追加内容
+file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+# print(file1.readlines()) #使用.readlines() 会生成一个列表
+data = file1.readlines()
+i = 1
+for nr in data:
+    print(&quot;第{}行内容为{}&quot;.format(i,nr))
+    i=i+1
+</code></pre>
+<p>运行结果:</p>
+<pre><code>第1行内容为hi!
+
+第2行内容为good morning!
+
+</code></pre>
+<p><strong>注意:</strong> 考虑到安全因素，文件调用完记得使用 file.close()将文件关闭.</p>
+<p>.read() 和 .seek()<br>
+当我们使用 .read()输出完内容后，再次调用输出内容为空，是因为指针这时指向了最后，如果我们想要再次输出的话可以使用.seek()来改变指针的位置，从而再次输出.</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+print(file1.read())
+</code></pre>
+<p>我们可以看到运行结果，只有一次内容输出</p>
+<pre><code class="language-python">hi!
+good morning!
+
+
+</code></pre>
+<p>使用.seek()后</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+file1.seek(0)
+print(file1.read())
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">hi!
+good morning!
+hi!
+good morning!
+</code></pre>
+<p>.readline(num)的用法<br>
+例如，我们输出该文件的第一个字符</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+data1 = file1.readline(1)
+print(data1)
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">h
+</code></pre>
+<h6 id="安全的打开文件自动调用close">安全的打开文件（自动调用.close()）</h6>
+<pre><code class="language-python">with open(&quot;test.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;测试写入&quot;)
+
+with open(&quot;test.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:
+    for line in f:
+        print(line,end=&quot;&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>测试写入
+</code></pre>
+<h6 id="利用os模块对文件的一些基本操作">利用os模块对文件的一些基本操作</h6>
+<p>使用内置模块时需要先引用<br>
+所以使用: import 引用<br>
+对路径可以加\表示是路径，也可以在前面加R或者r表示</p>
+<pre><code class="language-python">import os
+os.mkdir(r&quot;C:\Users\123\one&quot;)  #在某个路径下创建文件夹,对C盘操作可能没有权限，会报错
+
+print(os.getcwd())  #获取程序运行的当前目录
+
+print(os.chdir(r&quot;E:\1111&quot;)) #改变到某个目录下
+print(os.getcwd())
+
+os.chdir(&quot;../&quot;)  #切换到上级目录
+print(os.getcwd())
+
+a=os.listdir(r&quot;E:\1111&quot;) #获取指定目录下的文件列表
+print(a)
+
+ os.rmdir(r&quot;E:\1111&quot;)     #删除空的文件夹
+
+import  shutil
+shutil.rmtree(r&quot;E:\1111\444&quot;)  #删除非空的文件夹
+
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="文件的操作">文件的操作</h3>
+<p>语法： open(文件路径，访问模式，encoding=编码格式)</p>
+<p>文件路径:</p>
+<ol>
+<li>指定路径<br>
+&quot;C:\path\file.txt&quot;<br>
+r&quot;C:\path\file.txt&quot;<br>
+(windows下用&quot;&quot;来分隔路径<br>
+unix下用&quot;/&quot;分隔路径)</li>
+<li>不指定路径<br>
+file.txt,会在程序运行的目录下创建<br>
+可以使用os模块改变路径</li>
+</ol>
+<p>打开文件的三种访问模式<br>
+r:只读模式，默认<br>
+w:写入模式(覆盖)<br>
+a:追加模式<br>
+wb:以二进制形式打开一个文件用于写入一般用于非文本文件，图片</p>
+<p>编码格式：<br>
+防止中文乱码<br>
+GBK<br>
+UTF-8</p>
+<p>文件的常用方法：<br>
+.read() 方法读取文件的全部内容<br>
+.seek() 移动指针<br>
+.write() 向文件写入字符串<br>
+.readline(num) num给数字几，就输出几个字符<br>
+.readline()  按行，一行一行的读取文件数据<br>
+.readlines() 按行读取全部内容，返回的是一个文件数据列表，每一行是列表的一个元素</p>
+<p>对于只读模式(r)来说，如果文件不存在则报错：</p>
+<pre><code class="language-python">file = open(&quot;text.txt&quot;,&quot;r&quot;) #text.txt  并不存在  
+file.close()  #调用完需要将打开的文件关闭
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day08/demo01.py&quot;, line 1, in &lt;module&gt;
+    file = open(&quot;text.txt&quot;,&quot;r&quot;)
+FileNotFoundError: [Errno 2] No such file or directory: 'text.txt'
+</code></pre>
+<p>对于写入模式(w)来说，如果文件不存在，仍会报错，但会创建一个新的文件，如果文件已存在将会覆盖原文件.</p>
+<p>例如，向C盘一个文件写入&quot;hi!&quot;</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;w&quot;)
+file.write(&quot;hi!&quot;)
+file.close()
+</code></pre>
+<p>执行后，会在 <strong>“C:\Users\123\1.txt”</strong> 写入 <strong>“hi!”</strong></p>
+<p>我们使用.read()来读取刚才写进的内容</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;)
+print(file.read())
+file.close()
+</code></pre>
+<p>运行结果：</p>
+<pre><code>hi!  
+</code></pre>
+<p>接下来我们在上述内容后追加内容&quot;good morning!&quot;</p>
+<pre><code class="language-python">#向文本内追加内容  
+file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;a&quot;,encoding=&quot;utf-8&quot;)
+file.write(&quot; \ngood morning!&quot;)
+file.close()
+#输入文本里的内容
+file1 =open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>hi!
+good morning!
+</code></pre>
+<p>如果我们需要一行一行的输出，可以使用.readline() 或 .readlines()</p>
+<p>使用.readline()</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.readline())
+print(file1.readline())
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">hi!
+
+good morning!
+</code></pre>
+<p>使用.readlines()会生成一个列表，所以下面的内容中，我们把列表遍历输出</p>
+<pre><code class="language-python">#向文本内追加内容
+file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+# print(file1.readlines()) #使用.readlines() 会生成一个列表
+data = file1.readlines()
+i = 1
+for nr in data:
+    print(&quot;第{}行内容为{}&quot;.format(i,nr))
+    i=i+1
+</code></pre>
+<p>运行结果:</p>
+<pre><code>第1行内容为hi!
+
+第2行内容为good morning!
+
+</code></pre>
+<p><strong>注意:</strong> 考虑到安全因素，文件调用完记得使用 file.close()将文件关闭.</p>
+<p>.read() 和 .seek()<br>
+当我们使用 .read()输出完内容后，再次调用输出内容为空，是因为指针这时指向了最后，如果我们想要再次输出的话可以使用.seek()来改变指针的位置，从而再次输出.</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+print(file1.read())
+</code></pre>
+<p>我们可以看到运行结果，只有一次内容输出</p>
+<pre><code class="language-python">hi!
+good morning!
+
+
+</code></pre>
+<p>使用.seek()后</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+file1.seek(0)
+print(file1.read())
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">hi!
+good morning!
+hi!
+good morning!
+</code></pre>
+<p>.readline(num)的用法<br>
+例如，我们输出该文件的第一个字符</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+data1 = file1.readline(1)
+print(data1)
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">h
+</code></pre>
+<h6 id="安全的打开文件自动调用close">安全的打开文件（自动调用.close()）</h6>
+<pre><code class="language-python">with open(&quot;test.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;测试写入&quot;)
+
+with open(&quot;test.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:
+    for line in f:
+        print(line,end=&quot;&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>测试写入
+</code></pre>
+<h6 id="利用os模块对文件的一些基本操作">利用os模块对文件的一些基本操作</h6>
+<p>使用内置模块时需要先引用<br>
+所以使用: import 引用<br>
+对路径可以加\表示是路径，也可以在前面加R或者r表示</p>
+<pre><code class="language-python">import os
+os.mkdir(r&quot;C:\Users\123\one&quot;)  #在某个路径下创建文件夹,对C盘操作可能没有权限，会报错
+
+print(os.getcwd())  #获取程序运行的当前目录
+
+print(os.chdir(r&quot;E:\1111&quot;)) #改变到某个目录下
+print(os.getcwd())
+
+os.chdir(&quot;../&quot;)  #切换到上级目录
+print(os.getcwd())
+
+a=os.listdir(r&quot;E:\1111&quot;) #获取指定目录下的文件列表
+print(a)
+
+ os.rmdir(r&quot;E:\1111&quot;)     #删除空的文件夹
+
+import  shutil
+shutil.rmtree(r&quot;E:\1111\444&quot;)  #删除非空的文件夹
+
+</code></pre>
+<!-- more -->
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[frp内网穿透-公网IP低成本使用高性能kali]]></title>
-        <id>https://start-cat.github.io/post/hello-gridea/</id>
-        <link href="https://start-cat.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[python笔记之变量(variable) ]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="1frp">1.frp</h4>
-<p>Github项目地址:https://github.com/fatedier/frp</p>
-<p>找到最新的releases下载，系统版本自行确认。<br>
-使用命令</p>
-<pre><code>❯ uname -a
-Darwin bogon 19.5.0 Darwin Kernel Version 19.5.0: Tue May 26 20:41:44 PDT 2020; root:xnu-6153.121.2~2/RELEASE_X86_64 x86_64
+        <updated>2020-09-15T12:43:26.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="变量">变量</h3>
+<h6 id="局部变量">局部变量</h6>
+<ol>
+<li>函数内部定义的变量叫做局部变量</li>
+<li>不同函数之间，局部变量可以定义形同的名字，互不影响</li>
+</ol>
+<p>作用范围:<br>
+函数内有效,其他函数不能直接使用</p>
+<p>例如，</p>
+<pre><code class="language-python">def set_name():
+    name = &quot;云端之上&quot;
+    print(name)
+
+def get_name():
+    name = &quot;星空之下&quot;
+    print(name)
+
+set_name()
+get_name()
 </code></pre>
-<h4 id="2vpn">2.vpn</h4>
-<p>拥有公网IP的vps，配置随意</p>
-<h4 id="3服务端配置">3.服务端配置</h4>
-<p>拥有公网IP的服务端配置：</p>
-<p>解压---删除客户端的文件（可选）---修改配置文件---运行（-c指定运行的配置文件，同一目录下可不使用默认frps.ini）</p>
-<pre><code>root@vultr:~# tar -zxvf frp_0.33.0_linux_amd64.tar.gz
-frp_0.33.0_linux_amd64/
-frp_0.33.0_linux_amd64/frps_full.ini
-frp_0.33.0_linux_amd64/frps.ini
-frp_0.33.0_linux_amd64/frpc
-frp_0.33.0_linux_amd64/frpc_full.ini
-frp_0.33.0_linux_amd64/frps
-frp_0.33.0_linux_amd64/LICENSE
-frp_0.33.0_linux_amd64/frpc.ini
-frp_0.33.0_linux_amd64/systemd/
-frp_0.33.0_linux_amd64/systemd/frpc@.service
-frp_0.33.0_linux_amd64/systemd/frpc.service
-frp_0.33.0_linux_amd64/systemd/frps.service
-frp_0.33.0_linux_amd64/systemd/frps@.service
+<p>运行结果:</p>
+<pre><code class="language-ptyhon">云端之上
+星空之下
+</code></pre>
+<p>通过上述例子，我们可以发现:</p>
+<ol>
+<li>不同函数之间，局部变量可以定义相同的名字，互不影响</li>
+<li>上述函数中的name只在上个函数体内生效，其他函数内不生效</li>
+</ol>
+<p>那么，如果我想在get_name中使用set_name中的name怎么办呢？<br>
+别急,我们可以使用下面的方法:</p>
+<pre><code class="language-python">def set_name():
+    name = &quot;云端之上&quot;
+    return name  #1.返回name
 
-root@vultr:~/frp_0.33.0_linux_amd64# rm -rf frpc*
-root@vultr:~/frp_0.33.0_linux_amd64# ls
-LICENSE  frps  frps.ini  frps_full.ini  systemd
-root@vultr:~/frp_0.33.0_linux_amd64# vi frps.ini
+def get_name(name):  #3.需要set_name中名字，所以定义参数
+    print(name)
 
-[common]
-bind_port = 7000  #frps和frpc之间通讯端口
-dashboard_port = 7500 #监控页面web地址
-dashboard_user = xiaobaitu #监控页面账号
-dashboard_pwd = baiyoubai #监控页面账号
+a = set_name()   #2.调用函数返回一个值
+get_name(a)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>云端之上
+</code></pre>
+<h6 id="全局变量">全局变量</h6>
+<p>定义在函数外部的变量就叫做全局变量.</p>
+<p>作用范围：<br>
+可在不同的函数中使用</p>
+<p>在函数内使用global关键字实现修改全局变量的值</p>
+<p><strong>在函数体外定义的全局变量:</strong></p>
+<pre><code class="language-python">name = &quot;星空之下&quot;
+def set_name():
+    print(name)
 
-root@vultr:~/frp_0.33.0_linux_amd64# ./frps -c frps.ini
-2020/06/16 15:41:42 [I] [service.go:178] frps tcp listen on 0.0.0.0:7000
-2020/06/16 15:41:42 [I] [service.go:277] Dashboard listen on 0.0.0.0:7500
-2020/06/16 15:41:42 [I] [root.go:209] start frps success
+def get_name():
+    print(name)
+
+set_name()
+get_name()
+print(name)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>星空之下
+星空之下
+星空之下
+</code></pre>
+<p><strong>在函数体内定义的全局变量</strong></p>
+<pre><code class="language-python">age = 20
+def chang_age():
+    global age   #我们只需添加关键字glabal+变量名就可以，注意：列表和字典不可以用哦~
+    age = 25
+    print(&quot;函数体内的age是:%d&quot;%age)
+
+chang_age()
+print(age)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>函数体内的age是:25
+25
+</code></pre>
+<p>那么如果我们的变量是字典或列表，我们应该如何去修改全局变量呢？很简单，我们只需要在使用前先调用一下函数，然后再进行操作就可以了！</p>
+<pre><code class="language-python">g_list =[1,2,3]
+g_dict = {&quot;name&quot;:&quot;马云&quot;,&quot;age&quot;:666}
+
+def update_info():
+    g_list.append(4)
+    g_dict[&quot;monery&quot;] = &quot;￥1&quot;
+
+update_info()
+print(g_list)
+print(g_dict)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>[1, 2, 3, 4]
+{'name': '马云', 'age': 666, 'monery': '￥1'}
+</code></pre>
+<p><strong>注意：</strong><br>
+函数体外：局部变量<br>
+函数体外： 全局变量<br>
+全局变量在所有函数中使用<br>
+局部变量只能在所定义的函数中使用<br>
+如果在函数体内修改全局变量的值，使用 global 关键字<br>
+如果函数体内变量和全局变量相同，则判定它为和全局变量同名的<strong>局部变量</strong></p>
+<p>全局变量定义的位置:<br>
+函数定义之前或函数调用之前.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之序列(str的基本使用和常用操作)]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/">
+        </link>
+        <updated>2020-09-15T12:42:51.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="序列">序列</h3>
+<p>序列：列表(list),元组(tuple),字典(dict),集合(set),str,range()</p>
+<p>有序列表: list,tuple<br>
+无序列表: dict,set<br>
+可变序列: list,dict,,set<br>
+不可变:  tuple</p>
+<h4 id="str的基本使用和常用操作">str的基本使用和常用操作</h4>
+<h6 id="字符串的定义">字符串的定义</h6>
+<pre><code class="language-python">name = &quot;马小跳&quot;
+age = &quot;17&quot;  
+</code></pre>
+<h6 id="字符串的访问">字符串的访问</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;  
+print(s[0])
+print(s[3])
+</code></pre>
+<p>运行结果:</p>
+<pre><code>p
+h
+</code></pre>
+<h6 id="范围切片">范围，切片</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;
+print(s[0:6]) #指定开始和结束  
+print(s[:])   # 默认从开始到结尾  
+print(s[2:])  # 从2到结尾，包含2
+print(s[:5])  # 从开始到5,不包含5  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>python
+python
+thon
+pytho
+</code></pre>
+<h6 id="步长">步长</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;di_zoi_lvn_jen_l?g&quot;
+print(s[::2]) #从开始到结尾，步长为2
+</code></pre>
+<p>运行结果:</p>
+<pre><code>d_o_v_e_?
+</code></pre>
+<h6 id="转义字符">转义字符</h6>
+<p>\   转义<br>
+\n  换行<br>
+\t  制表符</p>
+<pre><code class="language-python">
+print(&quot;淘气包\n马\t小跳&quot;)  
 
 </code></pre>
-<h4 id="4客户端配置">4.客户端配置</h4>
-<p>步骤同上，解压---删除服务端文件(可选)---编辑配置文件---运行服务即可</p>
-<pre><code>
-root@kali:~# tar -zxvf frp_0.33.0_linux_amd64.tar.gz
-frp_0.33.0_linux_amd64/
-frp_0.33.0_linux_amd64/frps_full.ini
-frp_0.33.0_linux_amd64/frps.ini
-frp_0.33.0_linux_amd64/frpc
-frp_0.33.0_linux_amd64/frpc_full.ini
-frp_0.33.0_linux_amd64/frps
-frp_0.33.0_linux_amd64/LICENSE
-frp_0.33.0_linux_amd64/frpc.ini
-frp_0.33.0_linux_amd64/systemd/
-frp_0.33.0_linux_amd64/systemd/frpc@.service
-frp_0.33.0_linux_amd64/systemd/frpc.service
-frp_0.33.0_linux_amd64/systemd/frps.service
-frp_0.33.0_linux_amd64/systemd/frps@.service
-
-root@kali:~# cd frp_0.33.0_linux_amd64/
-root@kali:~/frp_0.33.0_linux_amd64# ls
-frpc  frpc_full.ini  frpc.ini  frps  frps_full.ini  frps.ini  LICENSE  systemd
-root@kali:~/frp_0.33.0_linux_amd64# rm -rf frps*
-root@kali:~/frp_0.33.0_linux_amd64# ls
-frpc  frpc_full.ini  frpc.ini  LICENSE  systemd
-root@kali:~/frp_0.33.0_linux_amd64# vi frpc.ini
-
-[common]
-server_addr = x.x.x.x #此处为公网IP
-server_port = 7000  #此处为公网服务端端口
-
-[ssh]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 22         #监听本地22端口
-remote_port = 10086     #转发到公网10086端口
-use_compression = true
+<p>运行结果:</p>
+<pre><code>淘气包
+马	小跳
+</code></pre>
+<h6 id="按照原始字符串进行输出">按照原始字符串进行输出</h6>
+<p>R<br>
+r<br>
+示例：</p>
+<pre><code class="language-python">print(r&quot;C:\Users\acer\Desktop\文本文档&quot;)
+print(R&quot;C:\Users\acer\Desktop\文本文档&quot;)
+</code></pre>
+<p>运行结果：</p>
+<pre><code>C:\Users\acer\Desktop\文本文档
+C:\Users\acer\Desktop\文本文档
+</code></pre>
+<h6 id="编码和解码">编码和解码</h6>
+<p>编码： encode()<br>
+解码： decode()</p>
+<pre><code class="language-python">baidu = &quot;我是百度&quot;
+print(baidu.encode())
+new = baidu.encode()
+print(new.decode())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>b'\xe6\x88\x91\xe6\x98\xaf\xe7\x99\xbe\xe5\xba\xa6'
+我是百度
+</code></pre>
+<h6 id="字符串的拼接">字符串的拼接</h6>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;蟒蛇是谁？&quot;
+b = &quot;Python&quot;
+print(a+b+str)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>蟒蛇是谁？Python
+</code></pre>
+<h6 id="判断字符是否包含给定字符">判断字符是否包含给定字符</h6>
+<p>如果包含返回True,不包含返回False</p>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;Python&quot;
+print(&quot;P&quot; in a)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True  
+</code></pre>
+<h6 id="重复输出字符串">重复输出字符串</h6>
+<p>示例：</p>
+<pre><code class="language-Python">print(&quot;a&quot;*10)  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>aaaaaaaaaa   
+</code></pre>
+<h6 id="字符串的替换">字符串的替换</h6>
+<p>用法：<br>
+变量.replace(&quot;被替换的字符&quot;,'替换字符')<br>
+示例：</p>
+<pre><code class="language-Python">s1 = &quot;python&quot;
+s2 = s1.replace(&quot;py&quot;,&quot;p&quot;)
+print(s1)
+print(s2)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>python
+pthon
+</code></pre>
+<p>注意：字符串本身不会改变，会返回一个新的字符串（结果）</p>
+<h6 id="字符串的查找">字符串的查找</h6>
+<p>变量.index(&quot;需要查找的字符&quot;)<br>
+变量.find(&quot;需要查找的字符&quot;)</p>
+<p>区别:<br>
+index查找失败会报错并终止程序<br>
+find 查找失败会返回-1，不会影响程序的运行</p>
+<p>示例1:  index 查找成功 和find 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;f&quot;))
+print(&quot;dfafdfsf&quot;.find(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1
+-1
+</code></pre>
+<p>示例2:  index 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day01/first.py&quot;, line 1, in &lt;module&gt;
+    print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+ValueError: substring not found  
+</code></pre>
+<h6 id="去除字符串两边指定的字符">去除字符串两边指定的字符</h6>
+<p>注意：默认去除两边空格，是两边的，不是中间</p>
+<p>示例:</p>
+<pre><code class="language-python">print(&quot;    py  thon  &quot;.strip())  #默认去除两边空格
+print(&quot;aaa pytho aa na a&quot;.strip(&quot;a&quot;))  #去除两边指定的字符
+</code></pre>
+<p>运行结果:</p>
+<pre><code>py  thon
+ pytho aa na
+</code></pre>
+<h6 id="去除左边指定的字符默认去除空格">去除左边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aa  python  &quot;.lstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  python  
+</code></pre>
+<h6 id="去除右边指定的字符默认去除空格">去除右边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python"> print(&quot;aaa pythonaaaa&quot;.rstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  aaa python
+</code></pre>
+<h6 id="开头首字母大写">开头首字母大写</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;pyThon&quot;
+print(s.capitalize())  #开头首字母大写
+print(s.upper())  #全部转换大写
+print(s.lower())  #全部转换小写
+print(s.title())  #无论是否大小写，只会让首字符大写
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Python
+PYTHON
+python
+Python
+</code></pre>
+<h6 id="判断是否全部大写小写首字母大写">判断是否全部大写，小写，首字母大写</h6>
+<p>示例:</p>
+<pre><code class="language-python">s1 = &quot;PYTHON&quot;
+s2 = &quot;python&quot;
+s3 = &quot;Python&quot;
+print(s1.isupper())   #是大写返回True 不是返回 False
+print(s2.islower())   #是小写返回True 不是返回 False
+print(s3.istitle())   #开头是大写返回True 不是返回 False
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+True
+True
+</code></pre>
+<h6 id="判断是否以某个字符开头或结尾区分大小写">判断是否以某个字符开头或结尾(区分大小写)</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;Python&quot;
+print(s.startswith(&quot;p&quot;))
+print(s.endswith(&quot;n&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母和数字">判断当前字符串是否全部是字母和数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;111aaaa#%$&quot;.isalnum())
+print(&quot;111aaaa&quot;.isalnum())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母">判断当前字符串是否全部是字母</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aadfaf&quot;.isalpha())
+print(&quot;aadfaf12&quot;.isalpha())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="判断当前字符串是否全部是数字">判断当前字符串是否全部是数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;123123&quot;.isdigit())
+print(&quot;123123aa&quot;.isdigit())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="字符串拆分成列表">字符串拆分成列表</h6>
+<p>示例：  以&quot; . &quot; 来拆分字符串</p>
+<pre><code class="language-python">print(&quot;www.baidu.com&quot;.split(&quot;.&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>['www', 'baidu', 'com']
+</code></pre>
+<h6 id="将序列中的元素以指定字符连接成一个新的字符串">将序列中的元素以指定字符连接成一个新的字符串</h6>
+<p>示例：</p>
+<pre><code class="language-python">a =['www', 'baidu', 'com']
+print(&quot;!&quot;.join(a)) #以“！”来连接
+print(&quot;&quot;.join(a))  #直接连接
+</code></pre>
+<p>运行结果:</p>
+<pre><code>www!baidu!com
+wwwbaiducom  
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="序列">序列</h3>
+<p>序列：列表(list),元组(tuple),字典(dict),集合(set),str,range()</p>
+<p>有序列表: list,tuple<br>
+无序列表: dict,set<br>
+可变序列: list,dict,,set<br>
+不可变:  tuple</p>
+<h4 id="str的基本使用和常用操作">str的基本使用和常用操作</h4>
+<h6 id="字符串的定义">字符串的定义</h6>
+<pre><code class="language-python">name = &quot;马小跳&quot;
+age = &quot;17&quot;  
+</code></pre>
+<h6 id="字符串的访问">字符串的访问</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;  
+print(s[0])
+print(s[3])
+</code></pre>
+<p>运行结果:</p>
+<pre><code>p
+h
+</code></pre>
+<h6 id="范围切片">范围，切片</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;
+print(s[0:6]) #指定开始和结束  
+print(s[:])   # 默认从开始到结尾  
+print(s[2:])  # 从2到结尾，包含2
+print(s[:5])  # 从开始到5,不包含5  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>python
+python
+thon
+pytho
+</code></pre>
+<h6 id="步长">步长</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;di_zoi_lvn_jen_l?g&quot;
+print(s[::2]) #从开始到结尾，步长为2
+</code></pre>
+<p>运行结果:</p>
+<pre><code>d_o_v_e_?
+</code></pre>
+<h6 id="转义字符">转义字符</h6>
+<p>\   转义<br>
+\n  换行<br>
+\t  制表符</p>
+<pre><code class="language-python">
+print(&quot;淘气包\n马\t小跳&quot;)  
 
 </code></pre>
-<h4 id="5连接测试">5.连接测试</h4>
-<pre><code>ssh root@x.x.x.x -p 10086  #输入账号密码即可
+<p>运行结果:</p>
+<pre><code>淘气包
+马	小跳
 </code></pre>
-<p>若要使用其他协议或进行其他端口转发可修改配置进行转发，例如msf生成一个tcp反弹shell并指定了公网IP和端口7878，则只需修改客户端(kali)的frp配置文件，添加如下内容</p>
-<pre><code>root@kali:~/frp_0.33.0_linux_amd64# vi frpc.ini
-
-[common]
-server_addr = x.x.x.x #此处为公网IP
-server_port = 7000  #此处为公网服务端端口
-
-[msf]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 7878         #监听本地7878端口
-remote_port = 7979     #转发到公网7979端口
-use_compression = true
+<h6 id="按照原始字符串进行输出">按照原始字符串进行输出</h6>
+<p>R<br>
+r<br>
+示例：</p>
+<pre><code class="language-python">print(r&quot;C:\Users\acer\Desktop\文本文档&quot;)
+print(R&quot;C:\Users\acer\Desktop\文本文档&quot;)
 </code></pre>
-<p>参考：https://www.sqlsec.com/2018/03/cloud.html</p>
+<p>运行结果：</p>
+<pre><code>C:\Users\acer\Desktop\文本文档
+C:\Users\acer\Desktop\文本文档
+</code></pre>
+<h6 id="编码和解码">编码和解码</h6>
+<p>编码： encode()<br>
+解码： decode()</p>
+<pre><code class="language-python">baidu = &quot;我是百度&quot;
+print(baidu.encode())
+new = baidu.encode()
+print(new.decode())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>b'\xe6\x88\x91\xe6\x98\xaf\xe7\x99\xbe\xe5\xba\xa6'
+我是百度
+</code></pre>
+<h6 id="字符串的拼接">字符串的拼接</h6>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;蟒蛇是谁？&quot;
+b = &quot;Python&quot;
+print(a+b+str)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>蟒蛇是谁？Python
+</code></pre>
+<h6 id="判断字符是否包含给定字符">判断字符是否包含给定字符</h6>
+<p>如果包含返回True,不包含返回False</p>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;Python&quot;
+print(&quot;P&quot; in a)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True  
+</code></pre>
+<h6 id="重复输出字符串">重复输出字符串</h6>
+<p>示例：</p>
+<pre><code class="language-Python">print(&quot;a&quot;*10)  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>aaaaaaaaaa   
+</code></pre>
+<h6 id="字符串的替换">字符串的替换</h6>
+<p>用法：<br>
+变量.replace(&quot;被替换的字符&quot;,'替换字符')<br>
+示例：</p>
+<pre><code class="language-Python">s1 = &quot;python&quot;
+s2 = s1.replace(&quot;py&quot;,&quot;p&quot;)
+print(s1)
+print(s2)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>python
+pthon
+</code></pre>
+<p>注意：字符串本身不会改变，会返回一个新的字符串（结果）</p>
+<h6 id="字符串的查找">字符串的查找</h6>
+<p>变量.index(&quot;需要查找的字符&quot;)<br>
+变量.find(&quot;需要查找的字符&quot;)</p>
+<p>区别:<br>
+index查找失败会报错并终止程序<br>
+find 查找失败会返回-1，不会影响程序的运行</p>
+<p>示例1:  index 查找成功 和find 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;f&quot;))
+print(&quot;dfafdfsf&quot;.find(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1
+-1
+</code></pre>
+<p>示例2:  index 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day01/first.py&quot;, line 1, in &lt;module&gt;
+    print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+ValueError: substring not found  
+</code></pre>
+<h6 id="去除字符串两边指定的字符">去除字符串两边指定的字符</h6>
+<p>注意：默认去除两边空格，是两边的，不是中间</p>
+<p>示例:</p>
+<pre><code class="language-python">print(&quot;    py  thon  &quot;.strip())  #默认去除两边空格
+print(&quot;aaa pytho aa na a&quot;.strip(&quot;a&quot;))  #去除两边指定的字符
+</code></pre>
+<p>运行结果:</p>
+<pre><code>py  thon
+ pytho aa na
+</code></pre>
+<h6 id="去除左边指定的字符默认去除空格">去除左边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aa  python  &quot;.lstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  python  
+</code></pre>
+<h6 id="去除右边指定的字符默认去除空格">去除右边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python"> print(&quot;aaa pythonaaaa&quot;.rstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  aaa python
+</code></pre>
+<h6 id="开头首字母大写">开头首字母大写</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;pyThon&quot;
+print(s.capitalize())  #开头首字母大写
+print(s.upper())  #全部转换大写
+print(s.lower())  #全部转换小写
+print(s.title())  #无论是否大小写，只会让首字符大写
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Python
+PYTHON
+python
+Python
+</code></pre>
+<h6 id="判断是否全部大写小写首字母大写">判断是否全部大写，小写，首字母大写</h6>
+<p>示例:</p>
+<pre><code class="language-python">s1 = &quot;PYTHON&quot;
+s2 = &quot;python&quot;
+s3 = &quot;Python&quot;
+print(s1.isupper())   #是大写返回True 不是返回 False
+print(s2.islower())   #是小写返回True 不是返回 False
+print(s3.istitle())   #开头是大写返回True 不是返回 False
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+True
+True
+</code></pre>
+<h6 id="判断是否以某个字符开头或结尾区分大小写">判断是否以某个字符开头或结尾(区分大小写)</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;Python&quot;
+print(s.startswith(&quot;p&quot;))
+print(s.endswith(&quot;n&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母和数字">判断当前字符串是否全部是字母和数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;111aaaa#%$&quot;.isalnum())
+print(&quot;111aaaa&quot;.isalnum())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母">判断当前字符串是否全部是字母</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aadfaf&quot;.isalpha())
+print(&quot;aadfaf12&quot;.isalpha())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="判断当前字符串是否全部是数字">判断当前字符串是否全部是数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;123123&quot;.isdigit())
+print(&quot;123123aa&quot;.isdigit())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="字符串拆分成列表">字符串拆分成列表</h6>
+<p>示例：  以&quot; . &quot; 来拆分字符串</p>
+<pre><code class="language-python">print(&quot;www.baidu.com&quot;.split(&quot;.&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>['www', 'baidu', 'com']
+</code></pre>
+<h6 id="将序列中的元素以指定字符连接成一个新的字符串">将序列中的元素以指定字符连接成一个新的字符串</h6>
+<p>示例：</p>
+<pre><code class="language-python">a =['www', 'baidu', 'com']
+print(&quot;!&quot;.join(a)) #以“！”来连接
+print(&quot;&quot;.join(a))  #直接连接
+</code></pre>
+<p>运行结果:</p>
+<pre><code>www!baidu!com
+wwwbaiducom  
+</code></pre>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之if练习]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-if-lian-xi/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-if-lian-xi/">
+        </link>
+        <updated>2020-09-15T12:42:26.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="if练习">if练习</h4>
+<p>此次小demo涉及到if嵌套，占位符使用，以及一个良好的思维逻辑。</p>
+<p>如题：<br>
+云彩之上奶茶店盛大开业！<br>
+门店招牌如下：劲爆劲爆，云彩之上开业了！，输入序号即可购买！<br>
+1 超土豪咖啡仅需￥88<br>
+2 宇宙无敌大榴莲￥12<br>
+3 自动翻译笔记本仅需￥100<br>
+4  贫民咖啡仅需￥1<br>
+5 土豪咖啡仅需￥8</p>
+<p>请你帮收银的奶茶妹妹设计一款价格结算系统，要求：</p>
+<ol>
+<li>顾客可以输入1-5来选择货品种类，输入其它数字则输出：</li>
+</ol>
+<blockquote>
+<p>新口味还请期待</p>
+</blockquote>
+<ol start="2">
+<li>顾客可以输入购买数量，根据货品种类和数量计算总价。</li>
+<li>顾客可输入是否为本馆会员，会员可享受9折优惠。</li>
+<li>输出顾客购买的详细信息，包括货品种类、购买数量、总价。若是会员，则输出会员价。</li>
+</ol>
+<p>ok,请你先思考5秒，为什么要做它？你要怎么做？<br>
+简单讲也就是，需求分析，步骤设计，码代码，调试，修改，再次修改，完成的流程。</p>
+<p>接下来请你先自己完成上述测试，然后在来和我比对，找出你我的不同之处，分析，比较，去其糟粕，取其精华，这样你才可以不断提高自己。</p>
+<p>接下来附上我的代码，由于此教程适合新手，不当之处，还请见谅。</p>
+<pre><code class="language-python">print(&quot;劲爆劲爆，云彩之上开业了！，输入序号即可购买！&quot;)
+print(&quot;1&quot;,&quot;超土豪咖啡仅需￥88&quot;)
+print(&quot;2&quot;,&quot;宇宙无敌大榴莲￥12&quot;)
+print(&quot;3&quot;,&quot;自动翻译笔记本仅需￥100&quot;)
+print(&quot;4&quot;,&quot;贫民咖啡仅需￥1&quot;)
+print(&quot;5&quot;,&quot;土豪咖啡仅需￥8&quot;)
+s1 = &quot;超土豪咖啡&quot;
+n1 = 88
+s2 = &quot;宇宙无敌大榴莲&quot;
+n2 = 12
+s3 = &quot;自动翻译笔记本&quot;
+n3 = 100
+s4 = &quot;贫民咖啡&quot;
+n4 = 1
+s5 = &quot;土豪咖啡&quot;
+n5 = 8
+guke = int(input(&quot;请输入商品序号:&quot;))
+if guke &gt;=1 and guke &lt;=5:
+    shul = int(input(&quot;请输入商品数量:&quot;))
+    vip = int(input(&quot;您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！&quot;))
+    if guke == 1 and vip == 0:
+        if vip == 0:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s1, n1, shul, n1 * shul))
+        else:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s1, n1, shul, n1 * shul * 0.9))
+    elif guke == 2:
+        if vip == 0:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s2, n2, shul, n2 * shul))
+        else:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s2, n2, shul, n2 * shul * 0.9))
+    elif guke == 3:
+        if vip == 0:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s3, n3, shul, n3 * shul))
+        else:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s3, n3, shul, n3 * shul * 0.9))
+    elif guke == 4:
+        if vip == 0:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s4, n4, shul, n4 * shul))
+        else:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s4, n4, shul, n4 * shul * 0.9))
+    elif guke == 5:
+        if vip == 0:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s5, n5, shul, n5 * shul))
+        else:
+            print(&quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&quot; % (s5, n5, shul, n5 * shul * 0.9))
+else:
+    print(&quot;新口味还请期待！&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>劲爆劲爆，云彩之上开业了！，输入序号即可购买！
+1 超土豪咖啡仅需￥88
+2 宇宙无敌大榴莲￥12
+3 自动翻译笔记本仅需￥100
+4 贫民咖啡仅需￥1
+5 土豪咖啡仅需￥8
+请输入商品序号:1
+请输入商品数量:2
+您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！1
+您购买的商品为:超土豪咖啡,单价为88,购买数量为2,总价为158.40
+</code></pre>
+<pre><code class="language-python">print(&quot;劲爆劲爆，云彩之上开业了！输入序号即可购买！&quot;)
+print(&quot;1.超土豪咖啡仅需￥88&quot;)
+print(&quot;2.宇宙无敌大榴莲￥12&quot;)
+print(&quot;3.自动翻译笔记本仅需￥100&quot;)
+print(&quot;4.贫民咖啡仅需￥1&quot;)
+print(&quot;5.土豪咖啡仅需￥8&quot;)
+dictName = {1:'超土豪咖啡',2:'宇宙无敌大榴莲',3:'自动翻译笔记本',4:'贫民咖啡',5:'土豪咖啡'}
+dictPrice = {1:'88',2:'12',3:'100',4:'1',5:'8'}
+guke = int(input(&quot;请输入商品序号:&quot;))
+if guke &gt;=1 and guke &lt;=5:
+    shul = input(&quot;请输入商品数量:&quot;)
+    vip = int(input(&quot;您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！&quot;))
+    if vip == 0:
+        print(&quot;您购买的商品为:&quot; + dictName[guke]+&quot;,单价为&quot; + dictPrice[guke] + &quot;,购买数量为:&quot; + shul + &quot;,总价为:&quot; + str(int(dictPrice[guke]) * int(shul)))
+    else:
+        print(&quot;您购买的商品为:&quot; + dictName[guke] + &quot;,单价为&quot; + dictPrice[guke] + &quot;,购买数量为:&quot; + shul + &quot;,总价为:&quot; + str(int(dictPrice[guke]) * int(shul) * 0.9))
+else:
+    print(&quot;新口味还请期待！&quot;)
+
+
+</code></pre>
+<p>运行结果：</p>
+<p>劲爆劲爆，云彩之上开业了！输入序号即可购买！<br>
+1.超土豪咖啡仅需￥88<br>
+2.宇宙无敌大榴莲￥12<br>
+3.自动翻译笔记本仅需￥100<br>
+4.贫民咖啡仅需￥1<br>
+5.土豪咖啡仅需￥8<br>
+请输入商品序号:1<br>
+请输入商品数量:1<br>
+您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！1<br>
+您购买的商品为:超土豪咖啡,单价为88,购买数量为:1,总价为:79.2</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之for循环]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-for-xun-huan/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-for-xun-huan/">
+        </link>
+        <updated>2020-09-15T12:41:54.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="for循环">for循环</h3>
+<p>语法:</p>
+<pre><code class="language-python">for  临时变量 in  可迭代的对象:  
+  满足条件所执行的代码块
+
+</code></pre>
+<h5 id="实例1">实例1</h5>
+<p>打印1-10的奇数 , 默认步长为1，下面是将步长设置为2，所以打印结果为奇数。</p>
+<pre><code class="language-python">for i in range(1,11,2):
+  print(i,end=&quot;&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1 3 5 7 9   
+</code></pre>
+<h5 id="实例2">实例2</h5>
+<p>打印字符串</p>
+<pre><code class="language-python">for s in &quot;python&quot;:
+  print(s)
+</code></pre>
+<p>运行结果</p>
+<pre><code>p
+y
+t
+h
+o
+n  
+</code></pre>
+<h6 id="实例3">实例3</h6>
+<p>循环的嵌套<br>
+print() 表示换行</p>
+<pre><code class="language-python">for i in range(0,5):
+  for j in range(0,6):
+    print(&quot;*&quot;,end=&quot; &quot;)
+  print()
+</code></pre>
+<p>运行结果:</p>
+<pre><code>* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之while和for循环]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-while-he-for-xun-huan/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-while-he-for-xun-huan/">
+        </link>
+        <updated>2020-09-15T12:41:22.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="实例1">实例1</h4>
+<p>输入n个数，求每次输入后的算术平均数。</p>
+<pre><code class="language-python">sum = 0 #总和
+count = 0 #计数
+while True:
+     n = input(&quot;请输入一个数:&quot;)
+     if n == &quot;exit&quot;:
+          break
+     sum+=int(n) #总和
+     count +=1 #计数
+     avg = sum/count #平均值
+print(&quot;平均数为:&quot;+str(avg))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>请输入一个数:1  
+请输入一个数:2  
+请输入一个数:3  
+请输入一个数:exit  
+平均数为:2.0  
+</code></pre>
+<h4 id="实例2">实例2</h4>
+<p>打印闪电</p>
+<pre><code class="language-python">for i in range(-3,4):
+    if i&lt;0:
+        print(&quot; &quot;*(-i)+&quot;*&quot;*(4+i))
+    elif i&gt;0:
+        print(&quot; &quot;*3 + &quot;*&quot;*(4-i))
+    else:
+        print(&quot;*&quot;*7)
+</code></pre>
+<p>运行结果:</p>
+<pre>
+   *
+  **
+ ***  
+*******
+   ***
+   **
+   *
+</pre>
+<h4 id="实例3">实例3</h4>
+<p>有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少?<br>
+可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去掉不满足条件的排列</p>
+<pre><code class="language-python">for i in range(1,5):
+    for j in range(1,5):
+        for k in range(1,5):
+            if (i != j) and (i != k) and (j != k):
+                print(i,j,k)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1 2 3
+1 2 4
+1 3 2
+1 3 4
+1 4 2
+1 4 3
+2 1 3
+2 1 4
+2 3 1
+2 3 4
+2 4 1
+2 4 3
+3 1 2
+3 1 4
+3 2 1
+3 2 4
+3 4 1
+3 4 2
+4 1 2
+4 1 3
+4 2 1
+4 2 3
+4 3 1
+4 3 2  
+</code></pre>
+<h4 id="实例4">实例4</h4>
+<p>随机数进行猜数游戏</p>
+<pre><code class="language-python">import random
+ran = random.randint(1,11)
+while True:
+    temp = input(&quot;请输入一个数:&quot;)
+    if temp.isdigit():
+        guess = int(temp)
+        if guess == ran:
+            print(&quot;对了&quot;)
+            break
+        elif guess &gt; ran:
+              print(&quot;大了&quot;)
+              continue
+        else:
+            print(&quot;小了&quot;)
+            continue
+    else:
+        print(&quot;请输入数字！&quot;)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>请输入一个数:ff
+请输入数字！
+请输入一个数:1
+小了
+请输入一个数:5
+小了
+请输入一个数:10
+对了  
+</code></pre>
+<h4 id="实例5">实例5</h4>
+<p>打印乘法表</p>
+<p>方法一：for 循环</p>
+<pre><code class="language-python">for i in range(1,10):
+    for j in range(1,i+1):
+        print(&quot;{}*{}={}\t&quot;.format(j,i,j*i),end=&quot;&quot;)
+    print()  
+</code></pre>
+<p>方法二：while 循环</p>
+<pre><code class="language-python">j =1
+while j&lt;=9:
+    i =1
+    while i&lt;=j:
+        print(&quot;%dx%d=%d&quot;%(i,j,i*j),end=&quot;\t&quot;)
+        i+=1
+    print()
+    j+=1
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1*1=1
+1*2=2	2*2=4
+1*3=3	2*3=6	 3*3=9
+1*4=4	2*4=8	 3*4=12	4*4=16
+1*5=5	2*5=10	3*5=15	4*5=20	5*5=25
+1*6=6	2*6=12	3*6=18	4*6=24	5*6=30	6*6=36
+1*7=7	2*7=14	3*7=21	4*7=28	5*7=35	6*7=42	7*7=49
+1*8=8	2*8=16	3*8=24	4*8=32	5*8=40	6*8=48	7*8=56	8*8=64
+1*9=9	2*9=18	3*9=27	4*9=36	5*9=45	6*9=54	7*9=63	8*9=72	9*9=81
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python条件判断]]></title>
+        <id>https://start-cat.github.io/post/python-tiao-jian-pan-duan/</id>
+        <link href="https://start-cat.github.io/post/python-tiao-jian-pan-duan/">
+        </link>
+        <updated>2020-09-15T12:40:41.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="if条件判断语句">if条件判断语句</h3>
+<p>语法格式:</p>
+<pre><code>if条件:  
+    逻辑代码  
+else:  
+    其他逻辑代码  
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">day =  input(&quot;今天星期几：&quot;)
+day = int(day)
+if day&lt;6:
+    print(&quot;是个工作的好日子&quot;)
+else:
+    print(&quot;不错的周末&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>今天星期几：6
+不错的周末
+</code></pre>
+<h4 id="多条件判断语句">多条件判断语句</h4>
+<p>语法:</p>
+<pre><code>if条件:  
+    逻辑代码  
+elif条件:  
+    逻辑代码  
+     ... ...
+else:  
+    逻辑代码    
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">day =  input(&quot;今天星期几：&quot;)
+day = int(day)
+if day == 1:
+    print(&quot;是个工作的好日子&quot;)
+elif day &gt;= 2 and day &lt;=5:
+    print(&quot;继续工作把&quot;)
+elif day == 6 or day == 7:
+    print(&quot;世界这么大，一起出去看看&quot;)
+else:
+    print(&quot;大哥，一周就7天，你想干嘛！&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>今天星期几：777
+大哥，一周就7天，你想干嘛！
+</code></pre>
+<pre><code>今天星期几：6
+世界这么大，一起出去看看
+</code></pre>
+<pre><code>今天星期几：3
+继续工作把
+</code></pre>
+<h4 id="if嵌套语句">if嵌套语句</h4>
+<p>语法:</p>
+<pre><code class="language-python">if 条件:  
+   逻辑代码  
+  if 条件:  
+   逻辑代码  
+  else:
+    逻辑代码  
+else:  
+    逻辑代码
+</code></pre>
+<p>示例:</p>
+<pre><code class="language-python">num = int(input(&quot;请输入一个数字:&quot;))
+if num &gt;= 1:
+  if num &lt;= 9:
+   print(&quot;这个数在1-9之间&quot;)
+  else:
+   print(&quot;我不猜了&quot;)
+else:
+    print(&quot;亲，能不能输入一个正整数啊！&quot;)
+</code></pre>
+<p>运行结果:</p>
+<p>输入-1 ：</p>
+<pre><code>请输入一个数字:-1
+亲，能不能输入一个正整数啊！
+</code></pre>
+<p>输入5  ：</p>
+<pre><code>请输入一个数字:5
+这个数在1-9之间
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[makdown语法]]></title>
+        <id>https://start-cat.github.io/post/makdown-yu-fa/</id>
+        <link href="https://start-cat.github.io/post/makdown-yu-fa/">
+        </link>
+        <updated>2020-09-15T12:39:57.000Z</updated>
+        <content type="html"><![CDATA[<p>1.标题</p>
+<pre><code># h1
+## h2
+### h3  
+注意： # 后面保持空格
+</code></pre>
+<p>效果图</p>
+<h1 id="h1">h1</h1>
+<h2 id="h2">h2</h2>
+<h3 id="h3">h3</h3>
+<p>2.分级标题</p>
+<pre><code>一级标题
+====
+</code></pre>
+<h1 id="一级标题">一级标题</h1>
+<pre><code>二级标题
+-----
+</code></pre>
+<h2 id="二级标题">二级标题</h2>
+<p>3.引用</p>
+<pre><code>单行式
+&gt; 这是单行式的引用
+</code></pre>
+<blockquote>
+<p>这是单行式的引用效果</p>
+</blockquote>
+<pre><code>多行式格式：
+&gt;111111  
+&gt;222222  
+&gt;333333  在结尾后加两个空格 表示换行
+</code></pre>
+<p>多行式效果图</p>
+<blockquote>
+<p>111111<br>
+222222<br>
+333333  在结尾后加两个空格 表示换行</p>
+</blockquote>
+<pre><code>缩进格式:
+&gt;aaaa
+&gt;&gt;bbbb
+&gt;&gt;&gt;cccc  
+</code></pre>
+<p>缩进效果图</p>
+<blockquote>
+<p>aaaa</p>
+<blockquote>
+<p>bbbb</p>
+<blockquote>
+<p>cccc</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>4.行内标记</p>
+<pre><code>格式：
+标记之外`在所标记的文字,英文状态右上角esc下的`标记之外
+</code></pre>
+<p>标记之外<code>在所标记的文字,英文状态右上角esc下的</code>标记之外</p>
+<p>5.代码块</p>
+<pre><code>print(&quot;hellow&quot;)
+</code></pre>
+<p>print(&quot;hellow&quot;)</p>
+<pre>
+```python
+'需要特定显示高亮，可在```后加语言名称'
+print("hellow,good morning!")
+```
+</pre>
+<pre><code class="language-python">'需要特定显示高亮，可在```后加语言名称'
+print(&quot;hellow,good morning!&quot;)
+</code></pre>
+<p>6.插入链接</p>
+<pre>
+[百度，请点击](http://www.baidu.com)
+</pre>
+<p><a href="http://www.baidu.com">百度，请点击</a></p>
+<p>7.插入图片</p>
+<pre>
+img 可直接生成 ![]()
+
+![如果没有图片显示这里的文字](./dianxin.png)
+
+当笔记和图片在同一目录下才可以用 ./ 表示路径  
+../   表示上一级路径  
+C：/makdown/笔记  表示绝对路径  
+</pre>
+<figure data-type="image" tabindex="1"><img src="./dianxin.png" alt="如果没有图片显示这里的文字" loading="lazy"></figure>
+<p>8.序列</p>
+<pre>
+有序格式
+
+1.  one
+2.  two
+3.  three
+</pre>
+<p>有序效果图</p>
+<ol>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+</ol>
+<pre>
+无序格式
+
+*  one
+*  two
+*  three
+</pre>
+<p>无序效果图</p>
+<ul>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+</ul>
+<pre>
+序列嵌套格式
+
+1.  one
+   1.  one-1
+   2.  one-2
+2.  two  
+    * two-1
+    * two-2
+
+</pre>
+<p>序列嵌套效果</p>
+<ol>
+<li>one</li>
+<li>one-1</li>
+<li>one-2</li>
+<li>two
+<ul>
+<li>two-1</li>
+<li>two-2</li>
+</ul>
+</li>
+</ol>
+<p>9.语义标记</p>
+<pre><code>格式：
+**加粗**
+
+&lt;b&gt;加粗&lt;/b&gt;
+
+*斜体*
+
+***加粗并且斜体***  
+
+**_加粗+斜体_**  
+
+~~删除线~~  
+
+</code></pre>
+<p>效果图 ：</p>
+<p><strong>加粗</strong></p>
+<p><b>加粗</b></p>
+<p><em>斜体</em></p>
+<p><em><strong>加粗并且斜体</strong></em></p>
+<p><strong><em>加粗+斜体</em></strong></p>
+<p><s>删除线</s></p>
+<p>10.格式化文本()</p>
+<pre><code>保持文本原样输出不变
+&lt;pre&gt;
+aaa  bbb  ccc  
+111  222  333
+zzz  zzz  zzz
+&lt;/pre&gt;
+</code></pre>
+<p>11.分割线</p>
+<pre><code>格式：
+***
+---
+* * *  
+</code></pre>
+<p>效果：</p>
+<hr>
+<hr>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之利用scrapy框架爬取糗事百科首页段子]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-scrapy-kuang-jia-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-scrapy-kuang-jia-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/">
+        </link>
+        <updated>2020-09-15T12:39:06.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="环境准备">环境准备:</h5>
+<ol>
+<li>scrapy框架（可以安装anaconda一个python的发行版本，有很多库）</li>
+<li>cmd命令窗口</li>
+</ol>
+<h5 id="教程">教程：</h5>
+<ol>
+<li>创建爬虫项目</li>
+</ol>
+<pre><code>scrapy startproject qq #创建了一个爬虫项目qq
+</code></pre>
+<ol start="2">
+<li>在项目中创建爬虫文件</li>
+</ol>
+<pre><code>scrapy genspider -t basic qsbk qiushibaike.com  
+</code></pre>
+<p>-t: 后面跟爬虫模板<br>
+qiushibaike.com  是开始爬取的域名</p>
+<ol start="3">
+<li>由于我们在windows中操作，所以创建好后，我们可以使用Pycharm打开我们的爬虫项目qq ,然后在spiders文件夹中找到我们创建的爬虫文件qsbk.py<br>
+编辑改文件</li>
+</ol>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+import scrapy   #调用scrapy框架
+from qq.items import QqItem  #调用items.py中的容器
+from scrapy import Request
+
+class QsbkSpider(scrapy.Spider):
+    name = 'qsbk'
+    allowed_domains = ['qiushibaike.com']
+    start_urls = ['http://qiushibaike.com/']
+
+    def start_requests(self):
+        ua = {&quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) &quot;
+                            &quot;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36&quot;}
+        yield Request('http://qiushibaike.com/', headers=ua)
+        #对浏览器进行伪装
+
+    def parse(self, response):
+        item = QqItem()
+        item[&quot;content&quot;] = response.xpath('//div[@class=&quot;content&quot;]/span/text()').extract()
+        item[&quot;link&quot;] = response.xpath('//a[@class=&quot;contentHerf&quot;]/@href').extract()
+        yield item
+#根据条件提取指定内容
+</code></pre>
+<p>编辑items.py文件，添加容器</p>
+<pre><code class="language-python">import scrapy
+
+
+class QqItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+     content = scrapy.Field() #添加容器content
+     link = scrapy.Field()  #添加容器link
+
+</code></pre>
+<p>最后，我们在命令行调用该文件<br>
+进入到我们的项目下，输入命令</p>
+<pre><code>scrapy crawl qsbk
+</code></pre>
+<p>如果没有内容显示，我们可以尝试更改项目下的settings.py文件</p>
+<pre><code>将ROBOTSTXT_OBEY = False  改为False  
+
+并将下面的内容去注释
+ITEM_PIPELINES = {
+   'qq.pipelines.QqPipeline': 300,
+}
+
+</code></pre>
+<p>至此，我们利用框架进行简单爬虫就完成了！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python笔记之利用BeautifulSoup爬取糗事百科首页段子]]></title>
+        <id>https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/</id>
+        <link href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/">
+        </link>
+        <updated>2020-09-15T12:37:58.000Z</updated>
+        <content type="html"><![CDATA[<p>1.到糗事百科查看网页源代码找到规律，发现内容都在class_=&quot;content&quot;的div标签内</p>
+<p>2.直接上代码：</p>
+<pre><code class="language-python">from bs4 import BeautifulSoup    #调用BeautifulSoup
+from urllib import request
+
+url = 'https://www.qiushibaike.com/'
+headers = (&quot;User-Agent&quot;,&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393&quot;)
+openner = request.build_opener()
+openner.addheaders = [headers]
+data = openner.open(url).read().decode(&quot;utf-8&quot;)  #对浏览器进行伪装，并以utf-8编码解码
+
+soup = BeautifulSoup(data,&quot;html.parser&quot;)    #将上面得到的网页内容，转为html.parser模板样式
+
+nodes = soup.find_all(&quot;div&quot;,class_=&quot;content&quot;)   #提取网页中的div标签内，class=&quot;content&quot;内的内容
+
+for node in nodes:
+    print(node.text.replace(&quot;\n&quot;,&quot;&quot;))  #将得到的内容去除\n ,并依次遍历出来  
+
+</code></pre>
+<p>附上运行结果，大家可以欣赏下</p>
+<pre><code>在市场里买了个白萝卜称了称一块二。只有一块零 钱找 零那些一毛的钢镚 儿最烦了你懂的。把钱递过去，说了句：“一块钱行不”另一只手在兜里摸着口袋，确保万一被拒绝一定要第一时间能拿出钱。大姐不置可否，漠漠然伸手捏住一块 钱的一角儿，另一只手递过萝 卜凝视着我的眼睛。周围卖鱼卖肉卖水果的吆喝声，瞬间被隔离，我们就这样各自捏着这一块钱的两边和萝卜的两头，互相审视着对方。她不松萝卜，我也没松钱！空气中弥漫着杀 气。我知道，这时候如果我先开口，就代表着认输啦！这不仅仅是2 毛 钱的问…查看全文
+一帮熊孩子在小区里踢足球，我外甥也在里面。这时我看见地上有枚金戒指，急忙弯腰去捡，额……你知道的，胖人弯腰很费力，我就两腿向两侧弯曲成O 形，再弯腰，戒指还没捡起来，就听一声:射门！足球从我两腿之间穿过来，把我的眼镜都打掉了……与此同时，我摸到地上那个戒指，它是个塑料的……
+化学课,老师在讲题,我同桌悄悄对我说:我觉得你对班上那XX有点意思啊。我:放屁!结果我说话声不知怎么贼大，老师当时就愣住了,然后看了看黑板说:我没讲错啊?
+昨天买了一部荣耀v10，然后手机自带语音，我给我手机智能语音起了个小林同学的名字。然后老婆夜班10点到家，就问我这个语音怎么弄的，我就告诉了她。然后她也玩，想了一伙起名小朱同学。然后我们就在对着手机各自玩，一伙就听见她对着她的手机叫小林同学，喊了半天手机没反应，就问我怎么不灵啊。然后我说了句，你喊我手机干嘛……
+lz女在上大学和男朋友异地。今天男友给我打电话让我用手。教我怎么做 我竟然gc了。这以后怎么办
+跟他是刚认识的同事，他看到我拿lv包包，私下跟其他同事说我装b，没钱还买假货。后来他知道我家是本地人，那包包也是真的，又是各种哥前哥后，说是跟我最投缘。天晓得，那个包包是抽奖抽到的，我家是本地人没错，但是，我家是本地最穷的。
+经过女同事的位置，她指着电脑问我：“你是不是有一件这样的衣服？”我看了看说：“嗯是的，想买给你老公？”她：“你上星期打麻将说先欠着我三百时，穿的就是这件衣服。”
+2018我的女朋友我相信糗友的力量，不过我一直发
+就现在，外面不是很热，穿短袖刚刚好，在办公室，女同事穿着厚外套，说热，空调开的温度特别低，我这一个穿短袖的，被冻成狗，此时，内心是绝望的，上天啊，谁来带走这奇葩
+为什么你们都不和我做朋友
+开车了，系好安全带！
+耳边好像传来了一首歌“西湖美景，三月天内……”
+这招好像落伍了吧[doge]
+俺们村有个丫头小丽，平常跟女汉子似的，天天就爱扎男人堆里玩。有一回秋天，我们村几个男人在吹牛皮，说到天冷了，我们想去给城里的洗头房的小妹妹送温暖。小丽听了，嚷嚷着也要去。我们就逗她：你去了不是送温暖，你去那里会被冻死的。”她没听懂，我们几个男人就在一旁坏笑😏
+我能说美女含蓄点吗，公共场合…
+去新公司面试，HR负责人问我：“”你谈过几个女朋友？”。我告诉他我老婆就是我的初恋。面试官走过来，拍拍我肩膀“你是个痴情好男人，但你不符合我们公司要求”。我不解，他紧着说道：“因为泡妞是个挑战你就挑战一次就止步不前了，说明你是个不爱挑战创新的人”
+刚才送闺女去兴趣班，电梯里遇到一个五六岁的小男孩，问他怎么一个人下去？小男孩说:“妈妈让我下去尿完再午睡”“为什么不在家里尿？一个人下去多危险啊”“妈妈说我尿多，在家里尿浪费水”我……
+从小我乖乖女的外表下有着一颗调皮捣蛋的心。放寒假父母去上班把我反锁在家里让我写作业，结果他们吃完午饭前脚刚走，我就翻出备用钥匙，从阳台把钥匙丢给住在隔壁的小伙伴帮我“越狱”，溜出去疯玩了整整一下午，直到父母下班时间快到了，再故技重施让小伙伴把我反锁起来，毫无破绽！谁知那天妈妈回到家，看到我像往常一样安静地坐在书桌前写作业。她盯着我看了一会儿，毫无征兆地抄起了鸡毛掸子：“在外面玩到很开心是吧？”我一惊，急忙狡辩：“没有啊，我一直在做作业！”老妈的鸡毛掸子像雨点般落下来：“你大冬天穿着单衣做作…查看全文
+话接上回，上个贴子说二闷子想去他爸的裤裆里找奶水把子，被他妈发现了…………我问：你妈发现了你偷唆你爸的奶水就把你打成猪头了？“屁啊！是我被我妈突然进房里来给下尿了，伸进我爸裤衩里的手下意识的一紧…………”然后怎么样了？找到你爸的奶水把子了？“然后我就扯到了我爸裤裆里的一蓬草”（现在想想估计这二逼是抓住了他爹的鸟毛了）啥玩意啊？？？？你爸裤裆里有草？卧槽！我又扯开自己的裤腰往裆里瞅？？？？怎么我裤裆里就一杆…查看全文
+只发图，不说话。
+小时候跟着电视学会的第一句英语是“oh my god”，但是那部电视的字幕翻译很缺德，因为他是用我们生活中的习惯用语来翻译的，比如刚才这句“oh my god”，他就直接给翻译成了“卧槽”，于是我也好死不死的跟着学会了。结果第一次上英语课的时候，老师在黑板上写出“oh my god”，问我们谁会翻译的时候，我第一个站了起来……
+小时候，一天，老爸下班，买回一大条驴打滚（香甜软糯），老爸切开，我和哥哥各一段。我见哥哥比我多，刚要哭，老爸拿起我那段，拉成细长，小声说：你比哥哥的长、比他多……当时，我就感觉哪里不对，直到后来学了体积……
+好朋友要和他女神表白，车钥匙扔给我，让我搞点重量级，大场面的！刚才钥匙已经给他了，并且千叮咛万嘱咐，千万不要打开，这东西是一次性的，我花了好大的力气才弄出来的，全是我辛勤的汗水啊～我觉得是时候出去旅个游避个风头了～哼，谁让他昨天吃雪糕不给我带的！
+这一天天的，前天大姑爷去世去参加葬礼，车钥匙折了花了七十三，，昨天表妹结婚，皮鞋底掉了，花了八十四。。。。下礼拜送亲我不敢想了。。。。。。。[大哭][大哭][大哭][大哭][大哭]
+许愿树许愿树，妹子的爱情就靠你了
+
+</code></pre>
 ]]></content>
     </entry>
 </feed>

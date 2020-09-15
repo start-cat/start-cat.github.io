@@ -8,7 +8,7 @@
 <meta name="keywords" content="个人博客">
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
-<title>关于 | Start-cat</title>
+<title>python笔记之利用BeautifulSoup爬取糗事百科首页段子 | Start-cat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="python笔记之利用BeautifulSoup爬取糗事百科首页段子" />
+  <meta name="keywords" content="python" />
 </head>
 
 <body>
@@ -193,8 +193,7 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            <div class="post-side-meta" id="post_side_meta">
-              
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -246,198 +245,6 @@
 
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-</div>
-
-<script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
-      }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
-    });
-  }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
           
         
       </div>
@@ -525,8 +332,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://start-cat.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/">
+      python笔记之利用BeautifulSoup爬取糗事百科首页段子
     </a>
   </h1>
   <div class="post-meta">
@@ -534,23 +341,36 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2020-09-15 20:37:58">2020-09-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://start-cat.github.io/tag/lImE3yf88/">
+        <span>python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>2200<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/" data-flag-title="python笔记之利用BeautifulSoup爬取糗事百科首页段子" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -559,17 +379,94 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <p>1.到糗事百科查看网页源代码找到规律，发现内容都在class_=&quot;content&quot;的div标签内</p>
+<p>2.直接上代码：</p>
+<pre><code class="language-python">from bs4 import BeautifulSoup    #调用BeautifulSoup
+from urllib import request
+
+url = 'https://www.qiushibaike.com/'
+headers = (&quot;User-Agent&quot;,&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393&quot;)
+openner = request.build_opener()
+openner.addheaders = [headers]
+data = openner.open(url).read().decode(&quot;utf-8&quot;)  #对浏览器进行伪装，并以utf-8编码解码
+
+soup = BeautifulSoup(data,&quot;html.parser&quot;)    #将上面得到的网页内容，转为html.parser模板样式
+
+nodes = soup.find_all(&quot;div&quot;,class_=&quot;content&quot;)   #提取网页中的div标签内，class=&quot;content&quot;内的内容
+
+for node in nodes:
+    print(node.text.replace(&quot;\n&quot;,&quot;&quot;))  #将得到的内容去除\n ,并依次遍历出来  
+
+</code></pre>
+<p>附上运行结果，大家可以欣赏下</p>
+<pre><code>在市场里买了个白萝卜称了称一块二。只有一块零 钱找 零那些一毛的钢镚 儿最烦了你懂的。把钱递过去，说了句：“一块钱行不”另一只手在兜里摸着口袋，确保万一被拒绝一定要第一时间能拿出钱。大姐不置可否，漠漠然伸手捏住一块 钱的一角儿，另一只手递过萝 卜凝视着我的眼睛。周围卖鱼卖肉卖水果的吆喝声，瞬间被隔离，我们就这样各自捏着这一块钱的两边和萝卜的两头，互相审视着对方。她不松萝卜，我也没松钱！空气中弥漫着杀 气。我知道，这时候如果我先开口，就代表着认输啦！这不仅仅是2 毛 钱的问…查看全文
+一帮熊孩子在小区里踢足球，我外甥也在里面。这时我看见地上有枚金戒指，急忙弯腰去捡，额……你知道的，胖人弯腰很费力，我就两腿向两侧弯曲成O 形，再弯腰，戒指还没捡起来，就听一声:射门！足球从我两腿之间穿过来，把我的眼镜都打掉了……与此同时，我摸到地上那个戒指，它是个塑料的……
+化学课,老师在讲题,我同桌悄悄对我说:我觉得你对班上那XX有点意思啊。我:放屁!结果我说话声不知怎么贼大，老师当时就愣住了,然后看了看黑板说:我没讲错啊?
+昨天买了一部荣耀v10，然后手机自带语音，我给我手机智能语音起了个小林同学的名字。然后老婆夜班10点到家，就问我这个语音怎么弄的，我就告诉了她。然后她也玩，想了一伙起名小朱同学。然后我们就在对着手机各自玩，一伙就听见她对着她的手机叫小林同学，喊了半天手机没反应，就问我怎么不灵啊。然后我说了句，你喊我手机干嘛……
+lz女在上大学和男朋友异地。今天男友给我打电话让我用手。教我怎么做 我竟然gc了。这以后怎么办
+跟他是刚认识的同事，他看到我拿lv包包，私下跟其他同事说我装b，没钱还买假货。后来他知道我家是本地人，那包包也是真的，又是各种哥前哥后，说是跟我最投缘。天晓得，那个包包是抽奖抽到的，我家是本地人没错，但是，我家是本地最穷的。
+经过女同事的位置，她指着电脑问我：“你是不是有一件这样的衣服？”我看了看说：“嗯是的，想买给你老公？”她：“你上星期打麻将说先欠着我三百时，穿的就是这件衣服。”
+2018我的女朋友我相信糗友的力量，不过我一直发
+就现在，外面不是很热，穿短袖刚刚好，在办公室，女同事穿着厚外套，说热，空调开的温度特别低，我这一个穿短袖的，被冻成狗，此时，内心是绝望的，上天啊，谁来带走这奇葩
+为什么你们都不和我做朋友
+开车了，系好安全带！
+耳边好像传来了一首歌“西湖美景，三月天内……”
+这招好像落伍了吧[doge]
+俺们村有个丫头小丽，平常跟女汉子似的，天天就爱扎男人堆里玩。有一回秋天，我们村几个男人在吹牛皮，说到天冷了，我们想去给城里的洗头房的小妹妹送温暖。小丽听了，嚷嚷着也要去。我们就逗她：你去了不是送温暖，你去那里会被冻死的。”她没听懂，我们几个男人就在一旁坏笑😏
+我能说美女含蓄点吗，公共场合…
+去新公司面试，HR负责人问我：“”你谈过几个女朋友？”。我告诉他我老婆就是我的初恋。面试官走过来，拍拍我肩膀“你是个痴情好男人，但你不符合我们公司要求”。我不解，他紧着说道：“因为泡妞是个挑战你就挑战一次就止步不前了，说明你是个不爱挑战创新的人”
+刚才送闺女去兴趣班，电梯里遇到一个五六岁的小男孩，问他怎么一个人下去？小男孩说:“妈妈让我下去尿完再午睡”“为什么不在家里尿？一个人下去多危险啊”“妈妈说我尿多，在家里尿浪费水”我……
+从小我乖乖女的外表下有着一颗调皮捣蛋的心。放寒假父母去上班把我反锁在家里让我写作业，结果他们吃完午饭前脚刚走，我就翻出备用钥匙，从阳台把钥匙丢给住在隔壁的小伙伴帮我“越狱”，溜出去疯玩了整整一下午，直到父母下班时间快到了，再故技重施让小伙伴把我反锁起来，毫无破绽！谁知那天妈妈回到家，看到我像往常一样安静地坐在书桌前写作业。她盯着我看了一会儿，毫无征兆地抄起了鸡毛掸子：“在外面玩到很开心是吧？”我一惊，急忙狡辩：“没有啊，我一直在做作业！”老妈的鸡毛掸子像雨点般落下来：“你大冬天穿着单衣做作…查看全文
+话接上回，上个贴子说二闷子想去他爸的裤裆里找奶水把子，被他妈发现了…………我问：你妈发现了你偷唆你爸的奶水就把你打成猪头了？“屁啊！是我被我妈突然进房里来给下尿了，伸进我爸裤衩里的手下意识的一紧…………”然后怎么样了？找到你爸的奶水把子了？“然后我就扯到了我爸裤裆里的一蓬草”（现在想想估计这二逼是抓住了他爹的鸟毛了）啥玩意啊？？？？你爸裤裆里有草？卧槽！我又扯开自己的裤腰往裆里瞅？？？？怎么我裤裆里就一杆…查看全文
+只发图，不说话。
+小时候跟着电视学会的第一句英语是“oh my god”，但是那部电视的字幕翻译很缺德，因为他是用我们生活中的习惯用语来翻译的，比如刚才这句“oh my god”，他就直接给翻译成了“卧槽”，于是我也好死不死的跟着学会了。结果第一次上英语课的时候，老师在黑板上写出“oh my god”，问我们谁会翻译的时候，我第一个站了起来……
+小时候，一天，老爸下班，买回一大条驴打滚（香甜软糯），老爸切开，我和哥哥各一段。我见哥哥比我多，刚要哭，老爸拿起我那段，拉成细长，小声说：你比哥哥的长、比他多……当时，我就感觉哪里不对，直到后来学了体积……
+好朋友要和他女神表白，车钥匙扔给我，让我搞点重量级，大场面的！刚才钥匙已经给他了，并且千叮咛万嘱咐，千万不要打开，这东西是一次性的，我花了好大的力气才弄出来的，全是我辛勤的汗水啊～我觉得是时候出去旅个游避个风头了～哼，谁让他昨天吃雪糕不给我带的！
+这一天天的，前天大姑爷去世去参加葬礼，车钥匙折了花了七十三，，昨天表妹结婚，皮鞋底掉了，花了八十四。。。。下礼拜送亲我不敢想了。。。。。。。[大哭][大哭][大哭][大哭][大哭]
+许愿树许愿树，妹子的爱情就靠你了
+
+</code></pre>
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      start-cat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/" title="python笔记之利用BeautifulSoup爬取糗事百科首页段子">https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://start-cat.github.io/tag/lImE3yf88/"># python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="python笔记之利用scrapy框架爬取糗事百科首页段子" href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-scrapy-kuang-jia-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/">python笔记之利用scrapy框架爬取糗事百科首页段子</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="python笔记之利用scrapy框架爬取糗事百科首页段子" href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-scrapy-kuang-jia-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title=" Python实现文件上传下载 " href="https://start-cat.github.io/post/python-shi-xian-wen-jian-shang-chuan-xia-zai/"> Python实现文件上传下载 </a>
+        <a class="nav-mobile-next" title=" Python实现文件上传下载 " href="https://start-cat.github.io/post/python-shi-xian-wen-jian-shang-chuan-xia-zai/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   

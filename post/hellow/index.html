@@ -9,7 +9,7 @@
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
 <title>喂！ | Start-cat</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1599993794548">
+<link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -213,19 +213,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">13</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -391,6 +391,10 @@
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title=" Python实现文件上传下载 " href="https://start-cat.github.io/post/python-shi-xian-wen-jian-shang-chuan-xia-zai/"> Python实现文件上传下载 </a class="nav-pc-next">
+        <a class="nav-mobile-prev" title=" Python实现文件上传下载 " href="https://start-cat.github.io/post/python-shi-xian-wen-jian-shang-chuan-xia-zai/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -864,6 +868,1360 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/"" data-c="
+          &lt;h3 id=&#34;文件的操作&#34;&gt;文件的操作&lt;/h3&gt;
+&lt;p&gt;语法： open(文件路径，访问模式，encoding=编码格式)&lt;/p&gt;
+&lt;p&gt;文件路径:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;指定路径&lt;br&gt;
+&amp;quot;C:\path\file.txt&amp;quot;&lt;br&gt;
+r&amp;quot;C:\path\file.txt&amp;quot;&lt;br&gt;
+(windows下用&amp;quot;&amp;quot;来分隔路径&lt;br&gt;
+unix下用&amp;quot;/&amp;quot;分隔路径)&lt;/li&gt;
+&lt;li&gt;不指定路径&lt;br&gt;
+file.txt,会在程序运行的目录下创建&lt;br&gt;
+可以使用os模块改变路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开文件的三种访问模式&lt;br&gt;
+r:只读模式，默认&lt;br&gt;
+w:写入模式(覆盖)&lt;br&gt;
+a:追加模式&lt;br&gt;
+wb:以二进制形式打开一个文件用于写入一般用于非文本文件，图片&lt;/p&gt;
+&lt;p&gt;编码格式：&lt;br&gt;
+防止中文乱码&lt;br&gt;
+GBK&lt;br&gt;
+UTF-8&lt;/p&gt;
+&lt;p&gt;文件的常用方法：&lt;br&gt;
+.read() 方法读取文件的全部内容&lt;br&gt;
+.seek() 移动指针&lt;br&gt;
+.write() 向文件写入字符串&lt;br&gt;
+.readline(num) num给数字几，就输出几个字符&lt;br&gt;
+.readline()  按行，一行一行的读取文件数据&lt;br&gt;
+.readlines() 按行读取全部内容，返回的是一个文件数据列表，每一行是列表的一个元素&lt;/p&gt;
+&lt;p&gt;对于只读模式(r)来说，如果文件不存在则报错：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file = open(&amp;quot;text.txt&amp;quot;,&amp;quot;r&amp;quot;) #text.txt  并不存在  
+file.close()  #调用完需要将打开的文件关闭
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Traceback (most recent call last):
+  File &amp;quot;G:/PyCharm_/python_basic/day08/demo01.py&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+    file = open(&amp;quot;text.txt&amp;quot;,&amp;quot;r&amp;quot;)
+FileNotFoundError: [Errno 2] No such file or directory: &#39;text.txt&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于写入模式(w)来说，如果文件不存在，仍会报错，但会创建一个新的文件，如果文件已存在将会覆盖原文件.&lt;/p&gt;
+&lt;p&gt;例如，向C盘一个文件写入&amp;quot;hi!&amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;w&amp;quot;)
+file.write(&amp;quot;hi!&amp;quot;)
+file.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行后，会在 &lt;strong&gt;“C:\Users\123\1.txt”&lt;/strong&gt; 写入 &lt;strong&gt;“hi!”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们使用.read()来读取刚才写进的内容&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;)
+print(file.read())
+file.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hi!  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接下来我们在上述内容后追加内容&amp;quot;good morning!&amp;quot;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#向文本内追加内容  
+file = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;a&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+file.write(&amp;quot; \ngood morning!&amp;quot;)
+file.close()
+#输入文本里的内容
+file1 =open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+print(file1.read())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hi!
+good morning!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果我们需要一行一行的输出，可以使用.readline() 或 .readlines()&lt;/p&gt;
+&lt;p&gt;使用.readline()&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file1 = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+print(file1.readline())
+print(file1.readline())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;hi!
+
+good morning!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用.readlines()会生成一个列表，所以下面的内容中，我们把列表遍历输出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#向文本内追加内容
+file1 = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+# print(file1.readlines()) #使用.readlines() 会生成一个列表
+data = file1.readlines()
+i = 1
+for nr in data:
+    print(&amp;quot;第{}行内容为{}&amp;quot;.format(i,nr))
+    i=i+1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;第1行内容为hi!
+
+第2行内容为good morning!
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; 考虑到安全因素，文件调用完记得使用 file.close()将文件关闭.&lt;/p&gt;
+&lt;p&gt;.read() 和 .seek()&lt;br&gt;
+当我们使用 .read()输出完内容后，再次调用输出内容为空，是因为指针这时指向了最后，如果我们想要再次输出的话可以使用.seek()来改变指针的位置，从而再次输出.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file1 = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+print(file1.read())
+print(file1.read())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可以看到运行结果，只有一次内容输出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;hi!
+good morning!
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用.seek()后&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file1 = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+print(file1.read())
+file1.seek(0)
+print(file1.read())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;hi!
+good morning!
+hi!
+good morning!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.readline(num)的用法&lt;br&gt;
+例如，我们输出该文件的第一个字符&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file1 = open(r&amp;quot;C:\Users\123\1.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;)
+data1 = file1.readline(1)
+print(data1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;h
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;安全的打开文件自动调用close&#34;&gt;安全的打开文件（自动调用.close()）&lt;/h6&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;with open(&amp;quot;test.txt&amp;quot;,&amp;quot;w&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;) as f:
+    f.write(&amp;quot;测试写入&amp;quot;)
+
+with open(&amp;quot;test.txt&amp;quot;,&amp;quot;r&amp;quot;,encoding=&amp;quot;utf-8&amp;quot;) as f:
+    for line in f:
+        print(line,end=&amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;测试写入
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;利用os模块对文件的一些基本操作&#34;&gt;利用os模块对文件的一些基本操作&lt;/h6&gt;
+&lt;p&gt;使用内置模块时需要先引用&lt;br&gt;
+所以使用: import 引用&lt;br&gt;
+对路径可以加\表示是路径，也可以在前面加R或者r表示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import os
+os.mkdir(r&amp;quot;C:\Users\123\one&amp;quot;)  #在某个路径下创建文件夹,对C盘操作可能没有权限，会报错
+
+print(os.getcwd())  #获取程序运行的当前目录
+
+print(os.chdir(r&amp;quot;E:\1111&amp;quot;)) #改变到某个目录下
+print(os.getcwd())
+
+os.chdir(&amp;quot;../&amp;quot;)  #切换到上级目录
+print(os.getcwd())
+
+a=os.listdir(r&amp;quot;E:\1111&amp;quot;) #获取指定目录下的文件列表
+print(a)
+
+ os.rmdir(r&amp;quot;E:\1111&amp;quot;)     #删除空的文件夹
+
+import  shutil
+shutil.rmtree(r&amp;quot;E:\1111\444&amp;quot;)  #删除非空的文件夹
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+">python笔记之文件的基本操作和os模块</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/"" data-c="
+          &lt;h3 id=&#34;变量&#34;&gt;变量&lt;/h3&gt;
+&lt;h6 id=&#34;局部变量&#34;&gt;局部变量&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;函数内部定义的变量叫做局部变量&lt;/li&gt;
+&lt;li&gt;不同函数之间，局部变量可以定义形同的名字，互不影响&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;作用范围:&lt;br&gt;
+函数内有效,其他函数不能直接使用&lt;/p&gt;
+&lt;p&gt;例如，&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def set_name():
+    name = &amp;quot;云端之上&amp;quot;
+    print(name)
+
+def get_name():
+    name = &amp;quot;星空之下&amp;quot;
+    print(name)
+
+set_name()
+get_name()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ptyhon&#34;&gt;云端之上
+星空之下
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过上述例子，我们可以发现:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不同函数之间，局部变量可以定义相同的名字，互不影响&lt;/li&gt;
+&lt;li&gt;上述函数中的name只在上个函数体内生效，其他函数内不生效&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;那么，如果我想在get_name中使用set_name中的name怎么办呢？&lt;br&gt;
+别急,我们可以使用下面的方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def set_name():
+    name = &amp;quot;云端之上&amp;quot;
+    return name  #1.返回name
+
+def get_name(name):  #3.需要set_name中名字，所以定义参数
+    print(name)
+
+a = set_name()   #2.调用函数返回一个值
+get_name(a)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;云端之上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;全局变量&#34;&gt;全局变量&lt;/h6&gt;
+&lt;p&gt;定义在函数外部的变量就叫做全局变量.&lt;/p&gt;
+&lt;p&gt;作用范围：&lt;br&gt;
+可在不同的函数中使用&lt;/p&gt;
+&lt;p&gt;在函数内使用global关键字实现修改全局变量的值&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在函数体外定义的全局变量:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name = &amp;quot;星空之下&amp;quot;
+def set_name():
+    print(name)
+
+def get_name():
+    print(name)
+
+set_name()
+get_name()
+print(name)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;星空之下
+星空之下
+星空之下
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;在函数体内定义的全局变量&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;age = 20
+def chang_age():
+    global age   #我们只需添加关键字glabal+变量名就可以，注意：列表和字典不可以用哦~
+    age = 25
+    print(&amp;quot;函数体内的age是:%d&amp;quot;%age)
+
+chang_age()
+print(age)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;函数体内的age是:25
+25
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么如果我们的变量是字典或列表，我们应该如何去修改全局变量呢？很简单，我们只需要在使用前先调用一下函数，然后再进行操作就可以了！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;g_list =[1,2,3]
+g_dict = {&amp;quot;name&amp;quot;:&amp;quot;马云&amp;quot;,&amp;quot;age&amp;quot;:666}
+
+def update_info():
+    g_list.append(4)
+    g_dict[&amp;quot;monery&amp;quot;] = &amp;quot;￥1&amp;quot;
+
+update_info()
+print(g_list)
+print(g_dict)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[1, 2, 3, 4]
+{&#39;name&#39;: &#39;马云&#39;, &#39;age&#39;: 666, &#39;monery&#39;: &#39;￥1&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;br&gt;
+函数体外：局部变量&lt;br&gt;
+函数体外： 全局变量&lt;br&gt;
+全局变量在所有函数中使用&lt;br&gt;
+局部变量只能在所定义的函数中使用&lt;br&gt;
+如果在函数体内修改全局变量的值，使用 global 关键字&lt;br&gt;
+如果函数体内变量和全局变量相同，则判定它为和全局变量同名的&lt;strong&gt;局部变量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;全局变量定义的位置:&lt;br&gt;
+函数定义之前或函数调用之前.&lt;/p&gt;
+">python笔记之变量(variable) </a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/"" data-c="
+          &lt;h3 id=&#34;序列&#34;&gt;序列&lt;/h3&gt;
+&lt;p&gt;序列：列表(list),元组(tuple),字典(dict),集合(set),str,range()&lt;/p&gt;
+&lt;p&gt;有序列表: list,tuple&lt;br&gt;
+无序列表: dict,set&lt;br&gt;
+可变序列: list,dict,,set&lt;br&gt;
+不可变:  tuple&lt;/p&gt;
+&lt;h4 id=&#34;str的基本使用和常用操作&#34;&gt;str的基本使用和常用操作&lt;/h4&gt;
+&lt;h6 id=&#34;字符串的定义&#34;&gt;字符串的定义&lt;/h6&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;name = &amp;quot;马小跳&amp;quot;
+age = &amp;quot;17&amp;quot;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;字符串的访问&#34;&gt;字符串的访问&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;python&amp;quot;  
+print(s[0])
+print(s[3])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;p
+h
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;范围切片&#34;&gt;范围，切片&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;python&amp;quot;
+print(s[0:6]) #指定开始和结束  
+print(s[:])   # 默认从开始到结尾  
+print(s[2:])  # 从2到结尾，包含2
+print(s[:5])  # 从开始到5,不包含5  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python
+python
+thon
+pytho
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;步长&#34;&gt;步长&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;di_zoi_lvn_jen_l?g&amp;quot;
+print(s[::2]) #从开始到结尾，步长为2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;d_o_v_e_?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;转义字符&#34;&gt;转义字符&lt;/h6&gt;
+&lt;p&gt;\   转义&lt;br&gt;
+\n  换行&lt;br&gt;
+\t  制表符&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
+print(&amp;quot;淘气包\n马\t小跳&amp;quot;)  
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;淘气包
+马	小跳
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;按照原始字符串进行输出&#34;&gt;按照原始字符串进行输出&lt;/h6&gt;
+&lt;p&gt;R&lt;br&gt;
+r&lt;br&gt;
+示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(r&amp;quot;C:\Users\acer\Desktop\文本文档&amp;quot;)
+print(R&amp;quot;C:\Users\acer\Desktop\文本文档&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Users\acer\Desktop\文本文档
+C:\Users\acer\Desktop\文本文档
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;编码和解码&#34;&gt;编码和解码&lt;/h6&gt;
+&lt;p&gt;编码： encode()&lt;br&gt;
+解码： decode()&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;baidu = &amp;quot;我是百度&amp;quot;
+print(baidu.encode())
+new = baidu.encode()
+print(new.decode())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;b&#39;\xe6\x88\x91\xe6\x98\xaf\xe7\x99\xbe\xe5\xba\xa6&#39;
+我是百度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;字符串的拼接&#34;&gt;字符串的拼接&lt;/h6&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a = &amp;quot;蟒蛇是谁？&amp;quot;
+b = &amp;quot;Python&amp;quot;
+print(a+b+str)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;蟒蛇是谁？Python
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断字符是否包含给定字符&#34;&gt;判断字符是否包含给定字符&lt;/h6&gt;
+&lt;p&gt;如果包含返回True,不包含返回False&lt;/p&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a = &amp;quot;Python&amp;quot;
+print(&amp;quot;P&amp;quot; in a)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;True  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;重复输出字符串&#34;&gt;重复输出字符串&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;print(&amp;quot;a&amp;quot;*10)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aaaaaaaaaa   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;字符串的替换&#34;&gt;字符串的替换&lt;/h6&gt;
+&lt;p&gt;用法：&lt;br&gt;
+变量.replace(&amp;quot;被替换的字符&amp;quot;,&#39;替换字符&#39;)&lt;br&gt;
+示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;s1 = &amp;quot;python&amp;quot;
+s2 = s1.replace(&amp;quot;py&amp;quot;,&amp;quot;p&amp;quot;)
+print(s1)
+print(s2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python
+pthon
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：字符串本身不会改变，会返回一个新的字符串（结果）&lt;/p&gt;
+&lt;h6 id=&#34;字符串的查找&#34;&gt;字符串的查找&lt;/h6&gt;
+&lt;p&gt;变量.index(&amp;quot;需要查找的字符&amp;quot;)&lt;br&gt;
+变量.find(&amp;quot;需要查找的字符&amp;quot;)&lt;/p&gt;
+&lt;p&gt;区别:&lt;br&gt;
+index查找失败会报错并终止程序&lt;br&gt;
+find 查找失败会返回-1，不会影响程序的运行&lt;/p&gt;
+&lt;p&gt;示例1:  index 查找成功 和find 查找失败&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;print(&amp;quot;dfafdfsf&amp;quot;.index(&amp;quot;f&amp;quot;))
+print(&amp;quot;dfafdfsf&amp;quot;.find(&amp;quot;z&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1
+-1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例2:  index 查找失败&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;print(&amp;quot;dfafdfsf&amp;quot;.index(&amp;quot;z&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Traceback (most recent call last):
+  File &amp;quot;G:/PyCharm_/python_basic/day01/first.py&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+    print(&amp;quot;dfafdfsf&amp;quot;.index(&amp;quot;z&amp;quot;))
+ValueError: substring not found  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;去除字符串两边指定的字符&#34;&gt;去除字符串两边指定的字符&lt;/h6&gt;
+&lt;p&gt;注意：默认去除两边空格，是两边的，不是中间&lt;/p&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;    py  thon  &amp;quot;.strip())  #默认去除两边空格
+print(&amp;quot;aaa pytho aa na a&amp;quot;.strip(&amp;quot;a&amp;quot;))  #去除两边指定的字符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;py  thon
+ pytho aa na
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;去除左边指定的字符默认去除空格&#34;&gt;去除左边指定的字符，默认去除空格&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;aa  python  &amp;quot;.lstrip(&amp;quot;a&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  python  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;去除右边指定的字符默认去除空格&#34;&gt;去除右边指定的字符，默认去除空格&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt; print(&amp;quot;aaa pythonaaaa&amp;quot;.rstrip(&amp;quot;a&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  aaa python
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;开头首字母大写&#34;&gt;开头首字母大写&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;pyThon&amp;quot;
+print(s.capitalize())  #开头首字母大写
+print(s.upper())  #全部转换大写
+print(s.lower())  #全部转换小写
+print(s.title())  #无论是否大小写，只会让首字符大写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Python
+PYTHON
+python
+Python
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断是否全部大写小写首字母大写&#34;&gt;判断是否全部大写，小写，首字母大写&lt;/h6&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s1 = &amp;quot;PYTHON&amp;quot;
+s2 = &amp;quot;python&amp;quot;
+s3 = &amp;quot;Python&amp;quot;
+print(s1.isupper())   #是大写返回True 不是返回 False
+print(s2.islower())   #是小写返回True 不是返回 False
+print(s3.istitle())   #开头是大写返回True 不是返回 False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;True
+True
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断是否以某个字符开头或结尾区分大小写&#34;&gt;判断是否以某个字符开头或结尾(区分大小写)&lt;/h6&gt;
+&lt;p&gt;如果是返回True,不是返回False&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;Python&amp;quot;
+print(s.startswith(&amp;quot;p&amp;quot;))
+print(s.endswith(&amp;quot;n&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;False
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断当前字符串是否全部是字母和数字&#34;&gt;判断当前字符串是否全部是字母和数字&lt;/h6&gt;
+&lt;p&gt;如果是返回True,不是返回False&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;111aaaa#%$&amp;quot;.isalnum())
+print(&amp;quot;111aaaa&amp;quot;.isalnum())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;False
+True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断当前字符串是否全部是字母&#34;&gt;判断当前字符串是否全部是字母&lt;/h6&gt;
+&lt;p&gt;如果是返回True,不是返回False&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;aadfaf&amp;quot;.isalpha())
+print(&amp;quot;aadfaf12&amp;quot;.isalpha())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;True
+False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;判断当前字符串是否全部是数字&#34;&gt;判断当前字符串是否全部是数字&lt;/h6&gt;
+&lt;p&gt;如果是返回True,不是返回False&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;123123&amp;quot;.isdigit())
+print(&amp;quot;123123aa&amp;quot;.isdigit())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;True
+False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;字符串拆分成列表&#34;&gt;字符串拆分成列表&lt;/h6&gt;
+&lt;p&gt;示例：  以&amp;quot; . &amp;quot; 来拆分字符串&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;www.baidu.com&amp;quot;.split(&amp;quot;.&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[&#39;www&#39;, &#39;baidu&#39;, &#39;com&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;将序列中的元素以指定字符连接成一个新的字符串&#34;&gt;将序列中的元素以指定字符连接成一个新的字符串&lt;/h6&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a =[&#39;www&#39;, &#39;baidu&#39;, &#39;com&#39;]
+print(&amp;quot;!&amp;quot;.join(a)) #以“！”来连接
+print(&amp;quot;&amp;quot;.join(a))  #直接连接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;www!baidu!com
+wwwbaiducom  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+">python笔记之序列(str的基本使用和常用操作)</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-if-lian-xi/"" data-c="
+          &lt;h4 id=&#34;if练习&#34;&gt;if练习&lt;/h4&gt;
+&lt;p&gt;此次小demo涉及到if嵌套，占位符使用，以及一个良好的思维逻辑。&lt;/p&gt;
+&lt;p&gt;如题：&lt;br&gt;
+云彩之上奶茶店盛大开业！&lt;br&gt;
+门店招牌如下：劲爆劲爆，云彩之上开业了！，输入序号即可购买！&lt;br&gt;
+1 超土豪咖啡仅需￥88&lt;br&gt;
+2 宇宙无敌大榴莲￥12&lt;br&gt;
+3 自动翻译笔记本仅需￥100&lt;br&gt;
+4  贫民咖啡仅需￥1&lt;br&gt;
+5 土豪咖啡仅需￥8&lt;/p&gt;
+&lt;p&gt;请你帮收银的奶茶妹妹设计一款价格结算系统，要求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;顾客可以输入1-5来选择货品种类，输入其它数字则输出：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;新口味还请期待&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;顾客可以输入购买数量，根据货品种类和数量计算总价。&lt;/li&gt;
+&lt;li&gt;顾客可输入是否为本馆会员，会员可享受9折优惠。&lt;/li&gt;
+&lt;li&gt;输出顾客购买的详细信息，包括货品种类、购买数量、总价。若是会员，则输出会员价。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ok,请你先思考5秒，为什么要做它？你要怎么做？&lt;br&gt;
+简单讲也就是，需求分析，步骤设计，码代码，调试，修改，再次修改，完成的流程。&lt;/p&gt;
+&lt;p&gt;接下来请你先自己完成上述测试，然后在来和我比对，找出你我的不同之处，分析，比较，去其糟粕，取其精华，这样你才可以不断提高自己。&lt;/p&gt;
+&lt;p&gt;接下来附上我的代码，由于此教程适合新手，不当之处，还请见谅。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;劲爆劲爆，云彩之上开业了！，输入序号即可购买！&amp;quot;)
+print(&amp;quot;1&amp;quot;,&amp;quot;超土豪咖啡仅需￥88&amp;quot;)
+print(&amp;quot;2&amp;quot;,&amp;quot;宇宙无敌大榴莲￥12&amp;quot;)
+print(&amp;quot;3&amp;quot;,&amp;quot;自动翻译笔记本仅需￥100&amp;quot;)
+print(&amp;quot;4&amp;quot;,&amp;quot;贫民咖啡仅需￥1&amp;quot;)
+print(&amp;quot;5&amp;quot;,&amp;quot;土豪咖啡仅需￥8&amp;quot;)
+s1 = &amp;quot;超土豪咖啡&amp;quot;
+n1 = 88
+s2 = &amp;quot;宇宙无敌大榴莲&amp;quot;
+n2 = 12
+s3 = &amp;quot;自动翻译笔记本&amp;quot;
+n3 = 100
+s4 = &amp;quot;贫民咖啡&amp;quot;
+n4 = 1
+s5 = &amp;quot;土豪咖啡&amp;quot;
+n5 = 8
+guke = int(input(&amp;quot;请输入商品序号:&amp;quot;))
+if guke &amp;gt;=1 and guke &amp;lt;=5:
+    shul = int(input(&amp;quot;请输入商品数量:&amp;quot;))
+    vip = int(input(&amp;quot;您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！&amp;quot;))
+    if guke == 1 and vip == 0:
+        if vip == 0:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s1, n1, shul, n1 * shul))
+        else:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s1, n1, shul, n1 * shul * 0.9))
+    elif guke == 2:
+        if vip == 0:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s2, n2, shul, n2 * shul))
+        else:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s2, n2, shul, n2 * shul * 0.9))
+    elif guke == 3:
+        if vip == 0:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s3, n3, shul, n3 * shul))
+        else:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s3, n3, shul, n3 * shul * 0.9))
+    elif guke == 4:
+        if vip == 0:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s4, n4, shul, n4 * shul))
+        else:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s4, n4, shul, n4 * shul * 0.9))
+    elif guke == 5:
+        if vip == 0:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s5, n5, shul, n5 * shul))
+        else:
+            print(&amp;quot;您购买的商品为:%s,单价为%d,购买数量为%d,总价为%.2f&amp;quot; % (s5, n5, shul, n5 * shul * 0.9))
+else:
+    print(&amp;quot;新口味还请期待！&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;劲爆劲爆，云彩之上开业了！，输入序号即可购买！
+1 超土豪咖啡仅需￥88
+2 宇宙无敌大榴莲￥12
+3 自动翻译笔记本仅需￥100
+4 贫民咖啡仅需￥1
+5 土豪咖啡仅需￥8
+请输入商品序号:1
+请输入商品数量:2
+您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！1
+您购买的商品为:超土豪咖啡,单价为88,购买数量为2,总价为158.40
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;劲爆劲爆，云彩之上开业了！输入序号即可购买！&amp;quot;)
+print(&amp;quot;1.超土豪咖啡仅需￥88&amp;quot;)
+print(&amp;quot;2.宇宙无敌大榴莲￥12&amp;quot;)
+print(&amp;quot;3.自动翻译笔记本仅需￥100&amp;quot;)
+print(&amp;quot;4.贫民咖啡仅需￥1&amp;quot;)
+print(&amp;quot;5.土豪咖啡仅需￥8&amp;quot;)
+dictName = {1:&#39;超土豪咖啡&#39;,2:&#39;宇宙无敌大榴莲&#39;,3:&#39;自动翻译笔记本&#39;,4:&#39;贫民咖啡&#39;,5:&#39;土豪咖啡&#39;}
+dictPrice = {1:&#39;88&#39;,2:&#39;12&#39;,3:&#39;100&#39;,4:&#39;1&#39;,5:&#39;8&#39;}
+guke = int(input(&amp;quot;请输入商品序号:&amp;quot;))
+if guke &amp;gt;=1 and guke &amp;lt;=5:
+    shul = input(&amp;quot;请输入商品数量:&amp;quot;)
+    vip = int(input(&amp;quot;您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！&amp;quot;))
+    if vip == 0:
+        print(&amp;quot;您购买的商品为:&amp;quot; + dictName[guke]+&amp;quot;,单价为&amp;quot; + dictPrice[guke] + &amp;quot;,购买数量为:&amp;quot; + shul + &amp;quot;,总价为:&amp;quot; + str(int(dictPrice[guke]) * int(shul)))
+    else:
+        print(&amp;quot;您购买的商品为:&amp;quot; + dictName[guke] + &amp;quot;,单价为&amp;quot; + dictPrice[guke] + &amp;quot;,购买数量为:&amp;quot; + shul + &amp;quot;,总价为:&amp;quot; + str(int(dictPrice[guke]) * int(shul) * 0.9))
+else:
+    print(&amp;quot;新口味还请期待！&amp;quot;)
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;p&gt;劲爆劲爆，云彩之上开业了！输入序号即可购买！&lt;br&gt;
+1.超土豪咖啡仅需￥88&lt;br&gt;
+2.宇宙无敌大榴莲￥12&lt;br&gt;
+3.自动翻译笔记本仅需￥100&lt;br&gt;
+4.贫民咖啡仅需￥1&lt;br&gt;
+5.土豪咖啡仅需￥8&lt;br&gt;
+请输入商品序号:1&lt;br&gt;
+请输入商品数量:1&lt;br&gt;
+您是否为本店会员？会员可享9折哦！输入1表示是会员！输入0表示非会员！1&lt;br&gt;
+您购买的商品为:超土豪咖啡,单价为88,购买数量为:1,总价为:79.2&lt;/p&gt;
+">python笔记之if练习</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-for-xun-huan/"" data-c="
+          &lt;h3 id=&#34;for循环&#34;&gt;for循环&lt;/h3&gt;
+&lt;p&gt;语法:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for  临时变量 in  可迭代的对象:  
+  满足条件所执行的代码块
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;实例1&#34;&gt;实例1&lt;/h5&gt;
+&lt;p&gt;打印1-10的奇数 , 默认步长为1，下面是将步长设置为2，所以打印结果为奇数。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(1,11,2):
+  print(i,end=&amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1 3 5 7 9   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;实例2&#34;&gt;实例2&lt;/h5&gt;
+&lt;p&gt;打印字符串&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for s in &amp;quot;python&amp;quot;:
+  print(s)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;p
+y
+t
+h
+o
+n  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;实例3&#34;&gt;实例3&lt;/h6&gt;
+&lt;p&gt;循环的嵌套&lt;br&gt;
+print() 表示换行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(0,5):
+  for j in range(0,6):
+    print(&amp;quot;*&amp;quot;,end=&amp;quot; &amp;quot;)
+  print()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+&lt;/code&gt;&lt;/pre&gt;
+">python笔记之for循环</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-while-he-for-xun-huan/"" data-c="
+          &lt;h4 id=&#34;实例1&#34;&gt;实例1&lt;/h4&gt;
+&lt;p&gt;输入n个数，求每次输入后的算术平均数。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sum = 0 #总和
+count = 0 #计数
+while True:
+     n = input(&amp;quot;请输入一个数:&amp;quot;)
+     if n == &amp;quot;exit&amp;quot;:
+          break
+     sum+=int(n) #总和
+     count +=1 #计数
+     avg = sum/count #平均值
+print(&amp;quot;平均数为:&amp;quot;+str(avg))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请输入一个数:1  
+请输入一个数:2  
+请输入一个数:3  
+请输入一个数:exit  
+平均数为:2.0  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;实例2&#34;&gt;实例2&lt;/h4&gt;
+&lt;p&gt;打印闪电&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(-3,4):
+    if i&amp;lt;0:
+        print(&amp;quot; &amp;quot;*(-i)+&amp;quot;*&amp;quot;*(4+i))
+    elif i&amp;gt;0:
+        print(&amp;quot; &amp;quot;*3 + &amp;quot;*&amp;quot;*(4-i))
+    else:
+        print(&amp;quot;*&amp;quot;*7)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;
+   *
+  **
+ ***  
+*******
+   ***
+   **
+   *
+&lt;/pre&gt;
+&lt;h4 id=&#34;实例3&#34;&gt;实例3&lt;/h4&gt;
+&lt;p&gt;有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少?&lt;br&gt;
+可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去掉不满足条件的排列&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(1,5):
+    for j in range(1,5):
+        for k in range(1,5):
+            if (i != j) and (i != k) and (j != k):
+                print(i,j,k)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1 2 3
+1 2 4
+1 3 2
+1 3 4
+1 4 2
+1 4 3
+2 1 3
+2 1 4
+2 3 1
+2 3 4
+2 4 1
+2 4 3
+3 1 2
+3 1 4
+3 2 1
+3 2 4
+3 4 1
+3 4 2
+4 1 2
+4 1 3
+4 2 1
+4 2 3
+4 3 1
+4 3 2  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;实例4&#34;&gt;实例4&lt;/h4&gt;
+&lt;p&gt;随机数进行猜数游戏&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import random
+ran = random.randint(1,11)
+while True:
+    temp = input(&amp;quot;请输入一个数:&amp;quot;)
+    if temp.isdigit():
+        guess = int(temp)
+        if guess == ran:
+            print(&amp;quot;对了&amp;quot;)
+            break
+        elif guess &amp;gt; ran:
+              print(&amp;quot;大了&amp;quot;)
+              continue
+        else:
+            print(&amp;quot;小了&amp;quot;)
+            continue
+    else:
+        print(&amp;quot;请输入数字！&amp;quot;)  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请输入一个数:ff
+请输入数字！
+请输入一个数:1
+小了
+请输入一个数:5
+小了
+请输入一个数:10
+对了  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;实例5&#34;&gt;实例5&lt;/h4&gt;
+&lt;p&gt;打印乘法表&lt;/p&gt;
+&lt;p&gt;方法一：for 循环&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(1,10):
+    for j in range(1,i+1):
+        print(&amp;quot;{}*{}={}\t&amp;quot;.format(j,i,j*i),end=&amp;quot;&amp;quot;)
+    print()  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;方法二：while 循环&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;j =1
+while j&amp;lt;=9:
+    i =1
+    while i&amp;lt;=j:
+        print(&amp;quot;%dx%d=%d&amp;quot;%(i,j,i*j),end=&amp;quot;\t&amp;quot;)
+        i+=1
+    print()
+    j+=1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1*1=1
+1*2=2	2*2=4
+1*3=3	2*3=6	 3*3=9
+1*4=4	2*4=8	 3*4=12	4*4=16
+1*5=5	2*5=10	3*5=15	4*5=20	5*5=25
+1*6=6	2*6=12	3*6=18	4*6=24	5*6=30	6*6=36
+1*7=7	2*7=14	3*7=21	4*7=28	5*7=35	6*7=42	7*7=49
+1*8=8	2*8=16	3*8=24	4*8=32	5*8=40	6*8=48	7*8=56	8*8=64
+1*9=9	2*9=18	3*9=27	4*9=36	5*9=45	6*9=54	7*9=63	8*9=72	9*9=81
+
+&lt;/code&gt;&lt;/pre&gt;
+">python笔记之while和for循环</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-tiao-jian-pan-duan/"" data-c="
+          &lt;h3 id=&#34;if条件判断语句&#34;&gt;if条件判断语句&lt;/h3&gt;
+&lt;p&gt;语法格式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if条件:  
+    逻辑代码  
+else:  
+    其他逻辑代码  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;day =  input(&amp;quot;今天星期几：&amp;quot;)
+day = int(day)
+if day&amp;lt;6:
+    print(&amp;quot;是个工作的好日子&amp;quot;)
+else:
+    print(&amp;quot;不错的周末&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;今天星期几：6
+不错的周末
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;多条件判断语句&#34;&gt;多条件判断语句&lt;/h4&gt;
+&lt;p&gt;语法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if条件:  
+    逻辑代码  
+elif条件:  
+    逻辑代码  
+     ... ...
+else:  
+    逻辑代码    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;day =  input(&amp;quot;今天星期几：&amp;quot;)
+day = int(day)
+if day == 1:
+    print(&amp;quot;是个工作的好日子&amp;quot;)
+elif day &amp;gt;= 2 and day &amp;lt;=5:
+    print(&amp;quot;继续工作把&amp;quot;)
+elif day == 6 or day == 7:
+    print(&amp;quot;世界这么大，一起出去看看&amp;quot;)
+else:
+    print(&amp;quot;大哥，一周就7天，你想干嘛！&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;今天星期几：777
+大哥，一周就7天，你想干嘛！
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;今天星期几：6
+世界这么大，一起出去看看
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;今天星期几：3
+继续工作把
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;if嵌套语句&#34;&gt;if嵌套语句&lt;/h4&gt;
+&lt;p&gt;语法:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if 条件:  
+   逻辑代码  
+  if 条件:  
+   逻辑代码  
+  else:
+    逻辑代码  
+else:  
+    逻辑代码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;num = int(input(&amp;quot;请输入一个数字:&amp;quot;))
+if num &amp;gt;= 1:
+  if num &amp;lt;= 9:
+   print(&amp;quot;这个数在1-9之间&amp;quot;)
+  else:
+   print(&amp;quot;我不猜了&amp;quot;)
+else:
+    print(&amp;quot;亲，能不能输入一个正整数啊！&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果:&lt;/p&gt;
+&lt;p&gt;输入-1 ：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请输入一个数字:-1
+亲，能不能输入一个正整数啊！
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输入5  ：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请输入一个数字:5
+这个数在1-9之间
+&lt;/code&gt;&lt;/pre&gt;
+">python条件判断</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/makdown-yu-fa/"" data-c="
+          &lt;p&gt;1.标题&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# h1
+## h2
+### h3  
+注意： # 后面保持空格
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果图&lt;/p&gt;
+&lt;h1 id=&#34;h1&#34;&gt;h1&lt;/h1&gt;
+&lt;h2 id=&#34;h2&#34;&gt;h2&lt;/h2&gt;
+&lt;h3 id=&#34;h3&#34;&gt;h3&lt;/h3&gt;
+&lt;p&gt;2.分级标题&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;一级标题
+====
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;二级标题
+-----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;二级标题&#34;&gt;二级标题&lt;/h2&gt;
+&lt;p&gt;3.引用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;单行式
+&amp;gt; 这是单行式的引用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是单行式的引用效果&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;多行式格式：
+&amp;gt;111111  
+&amp;gt;222222  
+&amp;gt;333333  在结尾后加两个空格 表示换行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行式效果图&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;111111&lt;br&gt;
+222222&lt;br&gt;
+333333  在结尾后加两个空格 表示换行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;缩进格式:
+&amp;gt;aaaa
+&amp;gt;&amp;gt;bbbb
+&amp;gt;&amp;gt;&amp;gt;cccc  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;缩进效果图&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;aaaa&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bbbb&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cccc&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;4.行内标记&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;格式：
+标记之外`在所标记的文字,英文状态右上角esc下的`标记之外
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标记之外&lt;code&gt;在所标记的文字,英文状态右上角esc下的&lt;/code&gt;标记之外&lt;/p&gt;
+&lt;p&gt;5.代码块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print(&amp;quot;hellow&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;print(&amp;quot;hellow&amp;quot;)&lt;/p&gt;
+&lt;pre&gt;
+```python
+&#39;需要特定显示高亮，可在```后加语言名称&#39;
+print(&#34;hellow,good morning!&#34;)
+```
+&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;&#39;需要特定显示高亮，可在```后加语言名称&#39;
+print(&amp;quot;hellow,good morning!&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.插入链接&lt;/p&gt;
+&lt;pre&gt;
+[百度，请点击](http://www.baidu.com)
+&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.baidu.com&#34;&gt;百度，请点击&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;7.插入图片&lt;/p&gt;
+&lt;pre&gt;
+img 可直接生成 ![]()
+
+![如果没有图片显示这里的文字](./dianxin.png)
+
+当笔记和图片在同一目录下才可以用 ./ 表示路径  
+../   表示上一级路径  
+C：/makdown/笔记  表示绝对路径  
+&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;./dianxin.png&#34; alt=&#34;如果没有图片显示这里的文字&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;8.序列&lt;/p&gt;
+&lt;pre&gt;
+有序格式
+
+1.  one
+2.  two
+3.  three
+&lt;/pre&gt;
+&lt;p&gt;有序效果图&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;one&lt;/li&gt;
+&lt;li&gt;two&lt;/li&gt;
+&lt;li&gt;three&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;
+无序格式
+
+*  one
+*  two
+*  three
+&lt;/pre&gt;
+&lt;p&gt;无序效果图&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;one&lt;/li&gt;
+&lt;li&gt;two&lt;/li&gt;
+&lt;li&gt;three&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+序列嵌套格式
+
+1.  one
+   1.  one-1
+   2.  one-2
+2.  two  
+    * two-1
+    * two-2
+
+&lt;/pre&gt;
+&lt;p&gt;序列嵌套效果&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;one&lt;/li&gt;
+&lt;li&gt;one-1&lt;/li&gt;
+&lt;li&gt;one-2&lt;/li&gt;
+&lt;li&gt;two
+&lt;ul&gt;
+&lt;li&gt;two-1&lt;/li&gt;
+&lt;li&gt;two-2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;9.语义标记&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;格式：
+**加粗**
+
+&amp;lt;b&amp;gt;加粗&amp;lt;/b&amp;gt;
+
+*斜体*
+
+***加粗并且斜体***  
+
+**_加粗+斜体_**  
+
+~~删除线~~  
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果图 ：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;加粗&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;加粗并且斜体&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;加粗+斜体&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;删除线&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;10.格式化文本()&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;保持文本原样输出不变
+&amp;lt;pre&amp;gt;
+aaa  bbb  ccc  
+111  222  333
+zzz  zzz  zzz
+&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;11.分割线&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;格式：
+***
+---
+* * *  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;效果：&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+">makdown语法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-scrapy-kuang-jia-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/"" data-c="
+          &lt;h5 id=&#34;环境准备&#34;&gt;环境准备:&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;scrapy框架（可以安装anaconda一个python的发行版本，有很多库）&lt;/li&gt;
+&lt;li&gt;cmd命令窗口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;教程&#34;&gt;教程：&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;创建爬虫项目&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;scrapy startproject qq #创建了一个爬虫项目qq
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在项目中创建爬虫文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;scrapy genspider -t basic qsbk qiushibaike.com  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;-t: 后面跟爬虫模板&lt;br&gt;
+qiushibaike.com  是开始爬取的域名&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;由于我们在windows中操作，所以创建好后，我们可以使用Pycharm打开我们的爬虫项目qq ,然后在spiders文件夹中找到我们创建的爬虫文件qsbk.py&lt;br&gt;
+编辑改文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# -*- coding: utf-8 -*-
+import scrapy   #调用scrapy框架
+from qq.items import QqItem  #调用items.py中的容器
+from scrapy import Request
+
+class QsbkSpider(scrapy.Spider):
+    name = &#39;qsbk&#39;
+    allowed_domains = [&#39;qiushibaike.com&#39;]
+    start_urls = [&#39;http://qiushibaike.com/&#39;]
+
+    def start_requests(self):
+        ua = {&amp;quot;User-Agent&amp;quot;: &amp;quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) &amp;quot;
+                            &amp;quot;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36&amp;quot;}
+        yield Request(&#39;http://qiushibaike.com/&#39;, headers=ua)
+        #对浏览器进行伪装
+
+    def parse(self, response):
+        item = QqItem()
+        item[&amp;quot;content&amp;quot;] = response.xpath(&#39;//div[@class=&amp;quot;content&amp;quot;]/span/text()&#39;).extract()
+        item[&amp;quot;link&amp;quot;] = response.xpath(&#39;//a[@class=&amp;quot;contentHerf&amp;quot;]/@href&#39;).extract()
+        yield item
+#根据条件提取指定内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编辑items.py文件，添加容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import scrapy
+
+
+class QqItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+     content = scrapy.Field() #添加容器content
+     link = scrapy.Field()  #添加容器link
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最后，我们在命令行调用该文件&lt;br&gt;
+进入到我们的项目下，输入命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scrapy crawl qsbk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果没有内容显示，我们可以尝试更改项目下的settings.py文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;将ROBOTSTXT_OBEY = False  改为False  
+
+并将下面的内容去注释
+ITEM_PIPELINES = {
+   &#39;qq.pipelines.QqPipeline&#39;: 300,
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;至此，我们利用框架进行简单爬虫就完成了！&lt;/p&gt;
+">python笔记之利用scrapy框架爬取糗事百科首页段子</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-bi-ji-zhi-li-yong-beautifulsoup-pa-qu-qiu-shi-bai-ke-shou-ye-duan-zi/"" data-c="
+          &lt;p&gt;1.到糗事百科查看网页源代码找到规律，发现内容都在class_=&amp;quot;content&amp;quot;的div标签内&lt;/p&gt;
+&lt;p&gt;2.直接上代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bs4 import BeautifulSoup    #调用BeautifulSoup
+from urllib import request
+
+url = &#39;https://www.qiushibaike.com/&#39;
+headers = (&amp;quot;User-Agent&amp;quot;,&amp;quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393&amp;quot;)
+openner = request.build_opener()
+openner.addheaders = [headers]
+data = openner.open(url).read().decode(&amp;quot;utf-8&amp;quot;)  #对浏览器进行伪装，并以utf-8编码解码
+
+soup = BeautifulSoup(data,&amp;quot;html.parser&amp;quot;)    #将上面得到的网页内容，转为html.parser模板样式
+
+nodes = soup.find_all(&amp;quot;div&amp;quot;,class_=&amp;quot;content&amp;quot;)   #提取网页中的div标签内，class=&amp;quot;content&amp;quot;内的内容
+
+for node in nodes:
+    print(node.text.replace(&amp;quot;\n&amp;quot;,&amp;quot;&amp;quot;))  #将得到的内容去除\n ,并依次遍历出来  
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;附上运行结果，大家可以欣赏下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在市场里买了个白萝卜称了称一块二。只有一块零 钱找 零那些一毛的钢镚 儿最烦了你懂的。把钱递过去，说了句：“一块钱行不”另一只手在兜里摸着口袋，确保万一被拒绝一定要第一时间能拿出钱。大姐不置可否，漠漠然伸手捏住一块 钱的一角儿，另一只手递过萝 卜凝视着我的眼睛。周围卖鱼卖肉卖水果的吆喝声，瞬间被隔离，我们就这样各自捏着这一块钱的两边和萝卜的两头，互相审视着对方。她不松萝卜，我也没松钱！空气中弥漫着杀 气。我知道，这时候如果我先开口，就代表着认输啦！这不仅仅是2 毛 钱的问…查看全文
+一帮熊孩子在小区里踢足球，我外甥也在里面。这时我看见地上有枚金戒指，急忙弯腰去捡，额……你知道的，胖人弯腰很费力，我就两腿向两侧弯曲成O 形，再弯腰，戒指还没捡起来，就听一声:射门！足球从我两腿之间穿过来，把我的眼镜都打掉了……与此同时，我摸到地上那个戒指，它是个塑料的……
+化学课,老师在讲题,我同桌悄悄对我说:我觉得你对班上那XX有点意思啊。我:放屁!结果我说话声不知怎么贼大，老师当时就愣住了,然后看了看黑板说:我没讲错啊?
+昨天买了一部荣耀v10，然后手机自带语音，我给我手机智能语音起了个小林同学的名字。然后老婆夜班10点到家，就问我这个语音怎么弄的，我就告诉了她。然后她也玩，想了一伙起名小朱同学。然后我们就在对着手机各自玩，一伙就听见她对着她的手机叫小林同学，喊了半天手机没反应，就问我怎么不灵啊。然后我说了句，你喊我手机干嘛……
+lz女在上大学和男朋友异地。今天男友给我打电话让我用手。教我怎么做 我竟然gc了。这以后怎么办
+跟他是刚认识的同事，他看到我拿lv包包，私下跟其他同事说我装b，没钱还买假货。后来他知道我家是本地人，那包包也是真的，又是各种哥前哥后，说是跟我最投缘。天晓得，那个包包是抽奖抽到的，我家是本地人没错，但是，我家是本地最穷的。
+经过女同事的位置，她指着电脑问我：“你是不是有一件这样的衣服？”我看了看说：“嗯是的，想买给你老公？”她：“你上星期打麻将说先欠着我三百时，穿的就是这件衣服。”
+2018我的女朋友我相信糗友的力量，不过我一直发
+就现在，外面不是很热，穿短袖刚刚好，在办公室，女同事穿着厚外套，说热，空调开的温度特别低，我这一个穿短袖的，被冻成狗，此时，内心是绝望的，上天啊，谁来带走这奇葩
+为什么你们都不和我做朋友
+开车了，系好安全带！
+耳边好像传来了一首歌“西湖美景，三月天内……”
+这招好像落伍了吧[doge]
+俺们村有个丫头小丽，平常跟女汉子似的，天天就爱扎男人堆里玩。有一回秋天，我们村几个男人在吹牛皮，说到天冷了，我们想去给城里的洗头房的小妹妹送温暖。小丽听了，嚷嚷着也要去。我们就逗她：你去了不是送温暖，你去那里会被冻死的。”她没听懂，我们几个男人就在一旁坏笑😏
+我能说美女含蓄点吗，公共场合…
+去新公司面试，HR负责人问我：“”你谈过几个女朋友？”。我告诉他我老婆就是我的初恋。面试官走过来，拍拍我肩膀“你是个痴情好男人，但你不符合我们公司要求”。我不解，他紧着说道：“因为泡妞是个挑战你就挑战一次就止步不前了，说明你是个不爱挑战创新的人”
+刚才送闺女去兴趣班，电梯里遇到一个五六岁的小男孩，问他怎么一个人下去？小男孩说:“妈妈让我下去尿完再午睡”“为什么不在家里尿？一个人下去多危险啊”“妈妈说我尿多，在家里尿浪费水”我……
+从小我乖乖女的外表下有着一颗调皮捣蛋的心。放寒假父母去上班把我反锁在家里让我写作业，结果他们吃完午饭前脚刚走，我就翻出备用钥匙，从阳台把钥匙丢给住在隔壁的小伙伴帮我“越狱”，溜出去疯玩了整整一下午，直到父母下班时间快到了，再故技重施让小伙伴把我反锁起来，毫无破绽！谁知那天妈妈回到家，看到我像往常一样安静地坐在书桌前写作业。她盯着我看了一会儿，毫无征兆地抄起了鸡毛掸子：“在外面玩到很开心是吧？”我一惊，急忙狡辩：“没有啊，我一直在做作业！”老妈的鸡毛掸子像雨点般落下来：“你大冬天穿着单衣做作…查看全文
+话接上回，上个贴子说二闷子想去他爸的裤裆里找奶水把子，被他妈发现了…………我问：你妈发现了你偷唆你爸的奶水就把你打成猪头了？“屁啊！是我被我妈突然进房里来给下尿了，伸进我爸裤衩里的手下意识的一紧…………”然后怎么样了？找到你爸的奶水把子了？“然后我就扯到了我爸裤裆里的一蓬草”（现在想想估计这二逼是抓住了他爹的鸟毛了）啥玩意啊？？？？你爸裤裆里有草？卧槽！我又扯开自己的裤腰往裆里瞅？？？？怎么我裤裆里就一杆…查看全文
+只发图，不说话。
+小时候跟着电视学会的第一句英语是“oh my god”，但是那部电视的字幕翻译很缺德，因为他是用我们生活中的习惯用语来翻译的，比如刚才这句“oh my god”，他就直接给翻译成了“卧槽”，于是我也好死不死的跟着学会了。结果第一次上英语课的时候，老师在黑板上写出“oh my god”，问我们谁会翻译的时候，我第一个站了起来……
+小时候，一天，老爸下班，买回一大条驴打滚（香甜软糯），老爸切开，我和哥哥各一段。我见哥哥比我多，刚要哭，老爸拿起我那段，拉成细长，小声说：你比哥哥的长、比他多……当时，我就感觉哪里不对，直到后来学了体积……
+好朋友要和他女神表白，车钥匙扔给我，让我搞点重量级，大场面的！刚才钥匙已经给他了，并且千叮咛万嘱咐，千万不要打开，这东西是一次性的，我花了好大的力气才弄出来的，全是我辛勤的汗水啊～我觉得是时候出去旅个游避个风头了～哼，谁让他昨天吃雪糕不给我带的！
+这一天天的，前天大姑爷去世去参加葬礼，车钥匙折了花了七十三，，昨天表妹结婚，皮鞋底掉了，花了八十四。。。。下礼拜送亲我不敢想了。。。。。。。[大哭][大哭][大哭][大哭][大哭]
+许愿树许愿树，妹子的爱情就靠你了
+
+&lt;/code&gt;&lt;/pre&gt;
+">python笔记之利用BeautifulSoup爬取糗事百科首页段子</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/python-shi-xian-wen-jian-shang-chuan-xia-zai/"" data-c="
+          &lt;p&gt;环境准备：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;实验分两个文件，服务端(linux)和客户端(windows).&lt;br&gt;
+服务端运行环境:python2.x&lt;br&gt;
+客户端运行环境:python3.x&lt;/li&gt;
+&lt;li&gt;使用了库socket和os&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;客户端代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import socket                    # 调用socket库
+
+HOST = &amp;quot;192.168.43.198&amp;quot;          # 定义服务器ip
+PORT = 5555                      # 定义端口号
+addr = (HOST,PORT)               # 由于使用socket进行连接，需要把ip和端口先转换为元组
+c = socket.socket(socket.AF_INET,socket.SOCK_STREAM)     # 设定了网络连接方式，以及传输使用的协议
+c.connect(addr) #连接服务器  
+
+def send_file():
+	data = c.recv(1024)                       # 设定接受数据大小
+	print(str(data,encoding=&#39;gbk&#39;))           # 打印出来，看起来直观，测试用，可以去除
+	filepath = input(&amp;quot;请输入文件名和路径:&amp;quot;)      # 输入要从上传的文件
+	with open(filepath,&amp;quot;rb&amp;quot;) as f:            # 以只读方式打开指定的文件
+		file = f.read()                  # 以byte 的方式读取文件内容
+		datas = c.sendall(file)                      # 发送文件内容
+
+def get_file():
+	filepath = input(&amp;quot;请输入服务器文件路径：&amp;quot;)   # 输入要从服务器下载的文件
+	c.send(bytes(filepath,encoding=&#39;gbk&#39;))   # 向服务器发送我们要下载的信息
+	data = c.recv(20480)                     # 指定接受数据大小
+	with open(&amp;quot;shadow.txt&amp;quot;,&amp;quot;wb&amp;quot;) as f:       # 打开本地文件，将接受到的数据写入本地指定的目录
+		f.write(data)
+
+
+def main():
+	while True:
+		cmd = input(&amp;quot;请输入命令:&amp;quot;)                 # 获取用户输入的命令
+		c.send(bytes(cmd,encoding=&#39;gbk&#39;))        # 发送用户输入的命令
+		if cmd == &amp;quot;bye&amp;quot;:                         # 如果用户输入bye结束程序
+			break
+		if cmd == &amp;quot;upload&amp;quot;:                      # 如果用户输入upload,调用send_file()函数，进行文件上传
+			send_file()
+		if cmd == &amp;quot;down&amp;quot;:                        # 如果用户输入down,调用get_file()函数，进行文件下载
+			get_file()
+		data = c.recv(20480)                     # 设置接受数据大小
+		print(str(data,encoding=&#39;gbk&#39;))          # 将接受的数据打印出来，没多大用
+	# ~ c.send(b&#39;word&#39;)  #发送字符串前面加b转换bytes比特格式	    
+	c.close()
+
+
+if __name__  == &amp;quot;__main__&amp;quot;:                      # 调用main()函数
+	main()
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;服务端代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#!/usr/bin/env python
+#-*- utf8 -*-  
+import socket           # 调用socket库
+import os               # 调用os库
+
+HOST = &amp;quot;192.168.43.198&amp;quot;          # 定义服务器ip
+PORT = 5555                      # 定义端口号
+addr = (HOST,PORT)               # 由于使用socket进行连接，需要把ip和端口先转换为元组
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)      # 设定了网络连接方式，以及传输使用的协议
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+s.bind(addr)                                              
+s.listen(1)
+conn,addr = s.accept()
+
+def get_file():
+    conn.send(&amp;quot;please sendfile:&amp;quot;)         # 向客户端发送提示信息
+    while True:
+        data = conn.recv(1024)            # 设置接受数据大小
+        with open(&amp;quot;/root/Desktop/up_load/data.txt&amp;quot;,&amp;quot;ab&amp;quot;) as f:    # 向指定的目录写入客户端发送过来的信息
+            f.write(data)
+        if not data:
+            break
+    conn.close()                             # 关闭连接
+
+def send_file():
+    filepath = conn.recv(1024)                 # 设置接受数据大小，接受客户端发送来的文件路径
+    with open(filepath,&#39;rb&#39;) as f:             # 读取客户端指定的文件
+        data = f.read()                        
+    conn.sendall(data)                        # 向客户端发送客户端指定的文件内容
+    conn.close()                              # 关闭连接
+
+def main():
+    while True:
+        cmd = conn.recv(1024)             # 接收客户端发送来的数据
+        if cmd == &amp;quot;bye&amp;quot;:                  # 如果客户端发送过来的是bye,结束程序
+            break
+        if cmd == &amp;quot;upload&amp;quot;:               # 如果客户端发送过来的是upload,调用函数get_file(),结束程序
+            get_file()
+            break
+        if cmd == &amp;quot;down&amp;quot;:                 # 如果客户端发送过来的是down,调用函数send_file(),结束程序
+            send_file()
+            break
+        data = os.popen(cmd)              # popen()可以执行shell命令，并读取此命令返回值
+        sdata = data.read()               # 将得到的内容通过read()转换后给了sdata
+        if sdata:
+            conn.sendall(sdata)           # 将得到的内容全部发送给客户端
+        else:
+            conn.send(&amp;quot;finish&amp;quot;)           # 如果客户端发送过来的是其他没有的指令，向客户端返回finish,防止程序假死
+    conn.close()                          # 关闭连接
+    s.close()
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    main()
+
+
+&lt;/code&gt;&lt;/pre&gt;
+"> Python实现文件上传下载 </a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://start-cat.github.io/post/hellow/"" data-c="

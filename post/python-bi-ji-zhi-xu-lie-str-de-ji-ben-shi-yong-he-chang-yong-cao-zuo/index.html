@@ -8,7 +8,7 @@
 <meta name="keywords" content="个人博客">
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
-<title>关于 | Start-cat</title>
+<title>python笔记之序列(str的基本使用和常用操作) | Start-cat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="python笔记之序列(str的基本使用和常用操作)" />
+  <meta name="keywords" content="python" />
 </head>
 
 <body>
@@ -254,10 +254,42 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#%E5%BA%8F%E5%88%97">序列</a>
+<ul>
+<li><a href="#str%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C">str的基本使用和常用操作</a><br>
+*
+<ul>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89">字符串的定义</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%AE%BF%E9%97%AE">字符串的访问</a></li>
+<li><a href="#%E8%8C%83%E5%9B%B4%E5%88%87%E7%89%87">范围，切片</a></li>
+<li><a href="#%E6%AD%A5%E9%95%BF">步长</a></li>
+<li><a href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6">转义字符</a></li>
+<li><a href="#%E6%8C%89%E7%85%A7%E5%8E%9F%E5%A7%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9B%E8%A1%8C%E8%BE%93%E5%87%BA">按照原始字符串进行输出</a></li>
+<li><a href="#%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81">编码和解码</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%BC%E6%8E%A5">字符串的拼接</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E7%BB%99%E5%AE%9A%E5%AD%97%E7%AC%A6">判断字符是否包含给定字符</a></li>
+<li><a href="#%E9%87%8D%E5%A4%8D%E8%BE%93%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2">重复输出字符串</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9B%BF%E6%8D%A2">字符串的替换</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9F%A5%E6%89%BE">字符串的查找</a></li>
+<li><a href="#%E5%8E%BB%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%A4%E8%BE%B9%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6">去除字符串两边指定的字符</a></li>
+<li><a href="#%E5%8E%BB%E9%99%A4%E5%B7%A6%E8%BE%B9%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E9%BB%98%E8%AE%A4%E5%8E%BB%E9%99%A4%E7%A9%BA%E6%A0%BC">去除左边指定的字符，默认去除空格</a></li>
+<li><a href="#%E5%8E%BB%E9%99%A4%E5%8F%B3%E8%BE%B9%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E9%BB%98%E8%AE%A4%E5%8E%BB%E9%99%A4%E7%A9%BA%E6%A0%BC">去除右边指定的字符，默认去除空格</a></li>
+<li><a href="#%E5%BC%80%E5%A4%B4%E9%A6%96%E5%AD%97%E6%AF%8D%E5%A4%A7%E5%86%99">开头首字母大写</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%85%A8%E9%83%A8%E5%A4%A7%E5%86%99%E5%B0%8F%E5%86%99%E9%A6%96%E5%AD%97%E6%AF%8D%E5%A4%A7%E5%86%99">判断是否全部大写，小写，首字母大写</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%BC%80%E5%A4%B4%E6%88%96%E7%BB%93%E5%B0%BE%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99">判断是否以某个字符开头或结尾(区分大小写)</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%85%A8%E9%83%A8%E6%98%AF%E5%AD%97%E6%AF%8D%E5%92%8C%E6%95%B0%E5%AD%97">判断当前字符串是否全部是字母和数字</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%85%A8%E9%83%A8%E6%98%AF%E5%AD%97%E6%AF%8D">判断当前字符串是否全部是字母</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%85%A8%E9%83%A8%E6%98%AF%E6%95%B0%E5%AD%97">判断当前字符串是否全部是数字</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%86%E5%88%86%E6%88%90%E5%88%97%E8%A1%A8">字符串拆分成列表</a></li>
+<li><a href="#%E5%B0%86%E5%BA%8F%E5%88%97%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E4%BB%A5%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E8%BF%9E%E6%8E%A5%E6%88%90%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">将序列中的元素以指定字符连接成一个新的字符串</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -525,8 +557,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://start-cat.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/">
+      python笔记之序列(str的基本使用和常用操作)
     </a>
   </h1>
   <div class="post-meta">
@@ -534,23 +566,36 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2020-09-15 20:42:51">2020-09-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://start-cat.github.io/tag/lImE3yf88/">
+        <span>python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1198<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/" data-flag-title="python笔记之序列(str的基本使用和常用操作)" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -559,17 +604,298 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h3 id="序列">序列</h3>
+<p>序列：列表(list),元组(tuple),字典(dict),集合(set),str,range()</p>
+<p>有序列表: list,tuple<br>
+无序列表: dict,set<br>
+可变序列: list,dict,,set<br>
+不可变:  tuple</p>
+<h4 id="str的基本使用和常用操作">str的基本使用和常用操作</h4>
+<h6 id="字符串的定义">字符串的定义</h6>
+<pre><code class="language-python">name = &quot;马小跳&quot;
+age = &quot;17&quot;  
+</code></pre>
+<h6 id="字符串的访问">字符串的访问</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;  
+print(s[0])
+print(s[3])
+</code></pre>
+<p>运行结果:</p>
+<pre><code>p
+h
+</code></pre>
+<h6 id="范围切片">范围，切片</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;python&quot;
+print(s[0:6]) #指定开始和结束  
+print(s[:])   # 默认从开始到结尾  
+print(s[2:])  # 从2到结尾，包含2
+print(s[:5])  # 从开始到5,不包含5  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>python
+python
+thon
+pytho
+</code></pre>
+<h6 id="步长">步长</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;di_zoi_lvn_jen_l?g&quot;
+print(s[::2]) #从开始到结尾，步长为2
+</code></pre>
+<p>运行结果:</p>
+<pre><code>d_o_v_e_?
+</code></pre>
+<h6 id="转义字符">转义字符</h6>
+<p>\   转义<br>
+\n  换行<br>
+\t  制表符</p>
+<pre><code class="language-python">
+print(&quot;淘气包\n马\t小跳&quot;)  
+
+</code></pre>
+<p>运行结果:</p>
+<pre><code>淘气包
+马	小跳
+</code></pre>
+<h6 id="按照原始字符串进行输出">按照原始字符串进行输出</h6>
+<p>R<br>
+r<br>
+示例：</p>
+<pre><code class="language-python">print(r&quot;C:\Users\acer\Desktop\文本文档&quot;)
+print(R&quot;C:\Users\acer\Desktop\文本文档&quot;)
+</code></pre>
+<p>运行结果：</p>
+<pre><code>C:\Users\acer\Desktop\文本文档
+C:\Users\acer\Desktop\文本文档
+</code></pre>
+<h6 id="编码和解码">编码和解码</h6>
+<p>编码： encode()<br>
+解码： decode()</p>
+<pre><code class="language-python">baidu = &quot;我是百度&quot;
+print(baidu.encode())
+new = baidu.encode()
+print(new.decode())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>b'\xe6\x88\x91\xe6\x98\xaf\xe7\x99\xbe\xe5\xba\xa6'
+我是百度
+</code></pre>
+<h6 id="字符串的拼接">字符串的拼接</h6>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;蟒蛇是谁？&quot;
+b = &quot;Python&quot;
+print(a+b+str)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>蟒蛇是谁？Python
+</code></pre>
+<h6 id="判断字符是否包含给定字符">判断字符是否包含给定字符</h6>
+<p>如果包含返回True,不包含返回False</p>
+<p>示例:</p>
+<pre><code class="language-python">a = &quot;Python&quot;
+print(&quot;P&quot; in a)  
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True  
+</code></pre>
+<h6 id="重复输出字符串">重复输出字符串</h6>
+<p>示例：</p>
+<pre><code class="language-Python">print(&quot;a&quot;*10)  
+</code></pre>
+<p>运行结果：</p>
+<pre><code>aaaaaaaaaa   
+</code></pre>
+<h6 id="字符串的替换">字符串的替换</h6>
+<p>用法：<br>
+变量.replace(&quot;被替换的字符&quot;,'替换字符')<br>
+示例：</p>
+<pre><code class="language-Python">s1 = &quot;python&quot;
+s2 = s1.replace(&quot;py&quot;,&quot;p&quot;)
+print(s1)
+print(s2)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>python
+pthon
+</code></pre>
+<p>注意：字符串本身不会改变，会返回一个新的字符串（结果）</p>
+<h6 id="字符串的查找">字符串的查找</h6>
+<p>变量.index(&quot;需要查找的字符&quot;)<br>
+变量.find(&quot;需要查找的字符&quot;)</p>
+<p>区别:<br>
+index查找失败会报错并终止程序<br>
+find 查找失败会返回-1，不会影响程序的运行</p>
+<p>示例1:  index 查找成功 和find 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;f&quot;))
+print(&quot;dfafdfsf&quot;.find(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>1
+-1
+</code></pre>
+<p>示例2:  index 查找失败</p>
+<pre><code class="language-Python">print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day01/first.py&quot;, line 1, in &lt;module&gt;
+    print(&quot;dfafdfsf&quot;.index(&quot;z&quot;))
+ValueError: substring not found  
+</code></pre>
+<h6 id="去除字符串两边指定的字符">去除字符串两边指定的字符</h6>
+<p>注意：默认去除两边空格，是两边的，不是中间</p>
+<p>示例:</p>
+<pre><code class="language-python">print(&quot;    py  thon  &quot;.strip())  #默认去除两边空格
+print(&quot;aaa pytho aa na a&quot;.strip(&quot;a&quot;))  #去除两边指定的字符
+</code></pre>
+<p>运行结果:</p>
+<pre><code>py  thon
+ pytho aa na
+</code></pre>
+<h6 id="去除左边指定的字符默认去除空格">去除左边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aa  python  &quot;.lstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  python  
+</code></pre>
+<h6 id="去除右边指定的字符默认去除空格">去除右边指定的字符，默认去除空格</h6>
+<p>示例：</p>
+<pre><code class="language-python"> print(&quot;aaa pythonaaaa&quot;.rstrip(&quot;a&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>  aaa python
+</code></pre>
+<h6 id="开头首字母大写">开头首字母大写</h6>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;pyThon&quot;
+print(s.capitalize())  #开头首字母大写
+print(s.upper())  #全部转换大写
+print(s.lower())  #全部转换小写
+print(s.title())  #无论是否大小写，只会让首字符大写
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Python
+PYTHON
+python
+Python
+</code></pre>
+<h6 id="判断是否全部大写小写首字母大写">判断是否全部大写，小写，首字母大写</h6>
+<p>示例:</p>
+<pre><code class="language-python">s1 = &quot;PYTHON&quot;
+s2 = &quot;python&quot;
+s3 = &quot;Python&quot;
+print(s1.isupper())   #是大写返回True 不是返回 False
+print(s2.islower())   #是小写返回True 不是返回 False
+print(s3.istitle())   #开头是大写返回True 不是返回 False
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+True
+True
+</code></pre>
+<h6 id="判断是否以某个字符开头或结尾区分大小写">判断是否以某个字符开头或结尾(区分大小写)</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">s = &quot;Python&quot;
+print(s.startswith(&quot;p&quot;))
+print(s.endswith(&quot;n&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母和数字">判断当前字符串是否全部是字母和数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;111aaaa#%$&quot;.isalnum())
+print(&quot;111aaaa&quot;.isalnum())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>False
+True
+</code></pre>
+<h6 id="判断当前字符串是否全部是字母">判断当前字符串是否全部是字母</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;aadfaf&quot;.isalpha())
+print(&quot;aadfaf12&quot;.isalpha())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="判断当前字符串是否全部是数字">判断当前字符串是否全部是数字</h6>
+<p>如果是返回True,不是返回False</p>
+<p>示例：</p>
+<pre><code class="language-python">print(&quot;123123&quot;.isdigit())
+print(&quot;123123aa&quot;.isdigit())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>True
+False
+</code></pre>
+<h6 id="字符串拆分成列表">字符串拆分成列表</h6>
+<p>示例：  以&quot; . &quot; 来拆分字符串</p>
+<pre><code class="language-python">print(&quot;www.baidu.com&quot;.split(&quot;.&quot;))
+</code></pre>
+<p>运行结果:</p>
+<pre><code>['www', 'baidu', 'com']
+</code></pre>
+<h6 id="将序列中的元素以指定字符连接成一个新的字符串">将序列中的元素以指定字符连接成一个新的字符串</h6>
+<p>示例：</p>
+<pre><code class="language-python">a =['www', 'baidu', 'com']
+print(&quot;!&quot;.join(a)) #以“！”来连接
+print(&quot;&quot;.join(a))  #直接连接
+</code></pre>
+<p>运行结果:</p>
+<pre><code>www!baidu!com
+wwwbaiducom  
+</code></pre>
+<!-- more -->
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      start-cat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/" title="python笔记之序列(str的基本使用和常用操作)">https://start-cat.github.io/post/python-bi-ji-zhi-xu-lie-str-de-ji-ben-shi-yong-he-chang-yong-cao-zuo/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://start-cat.github.io/tag/lImE3yf88/"># python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="python笔记之变量(variable) " href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">python笔记之变量(variable) </a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="python笔记之变量(variable) " href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="python笔记之if练习" href="https://start-cat.github.io/post/python-bi-ji-zhi-if-lian-xi/">python笔记之if练习</a>
+        <a class="nav-mobile-next" title="python笔记之if练习" href="https://start-cat.github.io/post/python-bi-ji-zhi-if-lian-xi/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   

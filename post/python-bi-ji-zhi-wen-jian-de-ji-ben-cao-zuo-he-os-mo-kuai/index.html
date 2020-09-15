@@ -8,7 +8,7 @@
 <meta name="keywords" content="个人博客">
 <meta name="description" content="以人为镜，可以明得失。">
 <meta name="theme-color" content="#000">
-<title>关于 | Start-cat</title>
+<title>python笔记之文件的基本操作和os模块 | Start-cat</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1600173857112">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -41,8 +41,8 @@
 
 
 
-  <meta name="description" content="关于" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="python笔记之文件的基本操作和os模块" />
+  <meta name="keywords" content="python" />
 </head>
 
 <body>
@@ -254,10 +254,15 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C">文件的操作</a><br>
+*<br>
+*<br>
+* <a href="#%E5%AE%89%E5%85%A8%E7%9A%84%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8close">安全的打开文件（自动调用.close()）</a><br>
+* <a href="#%E5%88%A9%E7%94%A8os%E6%A8%A1%E5%9D%97%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">利用os模块对文件的一些基本操作</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -525,8 +530,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://start-cat.github.io/post/about/">
-      关于
+    <a class="post-title-link" href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/">
+      python笔记之文件的基本操作和os模块
     </a>
   </h1>
   <div class="post-meta">
@@ -534,23 +539,36 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-01-25 19:09:48">2019-01-25</span>
+      <span class="publish-time" data-t="2020-09-15 20:43:56">2020-09-15</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://start-cat.github.io/tag/lImE3yf88/">
+        <span>python</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>31<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1216<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/about/" data-flag-title="关于" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/" data-flag-title="python笔记之文件的基本操作和os模块" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -559,17 +577,207 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <!-- more -->
-<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h3 id="文件的操作">文件的操作</h3>
+<p>语法： open(文件路径，访问模式，encoding=编码格式)</p>
+<p>文件路径:</p>
+<ol>
+<li>指定路径<br>
+&quot;C:\path\file.txt&quot;<br>
+r&quot;C:\path\file.txt&quot;<br>
+(windows下用&quot;&quot;来分隔路径<br>
+unix下用&quot;/&quot;分隔路径)</li>
+<li>不指定路径<br>
+file.txt,会在程序运行的目录下创建<br>
+可以使用os模块改变路径</li>
+</ol>
+<p>打开文件的三种访问模式<br>
+r:只读模式，默认<br>
+w:写入模式(覆盖)<br>
+a:追加模式<br>
+wb:以二进制形式打开一个文件用于写入一般用于非文本文件，图片</p>
+<p>编码格式：<br>
+防止中文乱码<br>
+GBK<br>
+UTF-8</p>
+<p>文件的常用方法：<br>
+.read() 方法读取文件的全部内容<br>
+.seek() 移动指针<br>
+.write() 向文件写入字符串<br>
+.readline(num) num给数字几，就输出几个字符<br>
+.readline()  按行，一行一行的读取文件数据<br>
+.readlines() 按行读取全部内容，返回的是一个文件数据列表，每一行是列表的一个元素</p>
+<p>对于只读模式(r)来说，如果文件不存在则报错：</p>
+<pre><code class="language-python">file = open(&quot;text.txt&quot;,&quot;r&quot;) #text.txt  并不存在  
+file.close()  #调用完需要将打开的文件关闭
+</code></pre>
+<p>运行结果:</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;G:/PyCharm_/python_basic/day08/demo01.py&quot;, line 1, in &lt;module&gt;
+    file = open(&quot;text.txt&quot;,&quot;r&quot;)
+FileNotFoundError: [Errno 2] No such file or directory: 'text.txt'
+</code></pre>
+<p>对于写入模式(w)来说，如果文件不存在，仍会报错，但会创建一个新的文件，如果文件已存在将会覆盖原文件.</p>
+<p>例如，向C盘一个文件写入&quot;hi!&quot;</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;w&quot;)
+file.write(&quot;hi!&quot;)
+file.close()
+</code></pre>
+<p>执行后，会在 <strong>“C:\Users\123\1.txt”</strong> 写入 <strong>“hi!”</strong></p>
+<p>我们使用.read()来读取刚才写进的内容</p>
+<pre><code class="language-python">file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;)
+print(file.read())
+file.close()
+</code></pre>
+<p>运行结果：</p>
+<pre><code>hi!  
+</code></pre>
+<p>接下来我们在上述内容后追加内容&quot;good morning!&quot;</p>
+<pre><code class="language-python">#向文本内追加内容  
+file = open(r&quot;C:\Users\123\1.txt&quot;,&quot;a&quot;,encoding=&quot;utf-8&quot;)
+file.write(&quot; \ngood morning!&quot;)
+file.close()
+#输入文本里的内容
+file1 =open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+</code></pre>
+<p>运行结果:</p>
+<pre><code>hi!
+good morning!
+</code></pre>
+<p>如果我们需要一行一行的输出，可以使用.readline() 或 .readlines()</p>
+<p>使用.readline()</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.readline())
+print(file1.readline())
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">hi!
+
+good morning!
+</code></pre>
+<p>使用.readlines()会生成一个列表，所以下面的内容中，我们把列表遍历输出</p>
+<pre><code class="language-python">#向文本内追加内容
+file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+# print(file1.readlines()) #使用.readlines() 会生成一个列表
+data = file1.readlines()
+i = 1
+for nr in data:
+    print(&quot;第{}行内容为{}&quot;.format(i,nr))
+    i=i+1
+</code></pre>
+<p>运行结果:</p>
+<pre><code>第1行内容为hi!
+
+第2行内容为good morning!
+
+</code></pre>
+<p><strong>注意:</strong> 考虑到安全因素，文件调用完记得使用 file.close()将文件关闭.</p>
+<p>.read() 和 .seek()<br>
+当我们使用 .read()输出完内容后，再次调用输出内容为空，是因为指针这时指向了最后，如果我们想要再次输出的话可以使用.seek()来改变指针的位置，从而再次输出.</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+print(file1.read())
+</code></pre>
+<p>我们可以看到运行结果，只有一次内容输出</p>
+<pre><code class="language-python">hi!
+good morning!
+
+
+</code></pre>
+<p>使用.seek()后</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+print(file1.read())
+file1.seek(0)
+print(file1.read())
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-python">hi!
+good morning!
+hi!
+good morning!
+</code></pre>
+<p>.readline(num)的用法<br>
+例如，我们输出该文件的第一个字符</p>
+<pre><code class="language-python">file1 = open(r&quot;C:\Users\123\1.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)
+data1 = file1.readline(1)
+print(data1)
+</code></pre>
+<p>运行结果:</p>
+<pre><code class="language-python">h
+</code></pre>
+<h6 id="安全的打开文件自动调用close">安全的打开文件（自动调用.close()）</h6>
+<pre><code class="language-python">with open(&quot;test.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;测试写入&quot;)
+
+with open(&quot;test.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:
+    for line in f:
+        print(line,end=&quot;&quot;)
+</code></pre>
+<p>运行结果:</p>
+<pre><code>测试写入
+</code></pre>
+<h6 id="利用os模块对文件的一些基本操作">利用os模块对文件的一些基本操作</h6>
+<p>使用内置模块时需要先引用<br>
+所以使用: import 引用<br>
+对路径可以加\表示是路径，也可以在前面加R或者r表示</p>
+<pre><code class="language-python">import os
+os.mkdir(r&quot;C:\Users\123\one&quot;)  #在某个路径下创建文件夹,对C盘操作可能没有权限，会报错
+
+print(os.getcwd())  #获取程序运行的当前目录
+
+print(os.chdir(r&quot;E:\1111&quot;)) #改变到某个目录下
+print(os.getcwd())
+
+os.chdir(&quot;../&quot;)  #切换到上级目录
+print(os.getcwd())
+
+a=os.listdir(r&quot;E:\1111&quot;) #获取指定目录下的文件列表
+print(a)
+
+ os.rmdir(r&quot;E:\1111&quot;)     #删除空的文件夹
+
+import  shutil
+shutil.rmtree(r&quot;E:\1111\444&quot;)  #删除非空的文件夹
+
+</code></pre>
+<!-- more -->
 
             </div>
             
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      start-cat
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/" title="python笔记之文件的基本操作和os模块">https://start-cat.github.io/post/python-bi-ji-zhi-wen-jian-de-ji-ben-cao-zuo-he-os-mo-kuai/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://start-cat.github.io/tag/lImE3yf88/"># python</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="python笔记之变量(variable) " href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">python笔记之变量(variable) </a>
+        <a class="nav-mobile-next" title="python笔记之变量(variable) " href="https://start-cat.github.io/post/python-bi-ji-zhi-bian-liang-variable/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
             
             
   
